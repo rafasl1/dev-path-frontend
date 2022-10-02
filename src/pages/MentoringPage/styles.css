@@ -4,9 +4,10 @@
 }
 
 #infos {
+    margin: 10px auto;
     padding: auto 30px;
 
-    width: 40%;
+    width: 38%;
     height: 620px;
 
     background-color: #c2d74d;

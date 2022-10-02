@@ -6,9 +6,9 @@ export function MentorCard (props: MentorCardContent) {
         <div id="card">
             <img src={props.image}/>
             <h3>{props.name}</h3>
-            <p>{props.role}</p>
-            <p>{props.experienceTime}</p>
-            <b>{"Valor por hora: R$" + props.hourValue + ",00"}</b>
+            <div className="cardContent">{props.role}</div>
+            <div className="cardContent">{props.experienceTime}</div>
+            <b className="cardContent">{"Valor por hora: R$" + props.hourValue + ",00"}</b>
         </div>
     )
 }

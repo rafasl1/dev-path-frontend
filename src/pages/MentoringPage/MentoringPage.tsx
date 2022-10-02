@@ -6,6 +6,8 @@ import Man3 from '../../assets/man(3)1.svg'
 import Woman1 from '../../assets/woman(1)1.svg'
 import Woman2 from '../../assets/woman(2)1.svg'
 import Woman3 from '../../assets/woman(3)1.svg'
+import Man4 from '../../assets/man(4)1.svg'
+import Man5 from '../../assets/man(5)1.svg'
 import './styles.css'
 
 export function MentoringPage() {
@@ -90,12 +92,30 @@ export function getMentors(): Array<MentorCardContent> {
         hourValue: 100.00
     }
 
+    const mentor7 = {
+        image: Man5,
+        name: "João Melo",
+        role: "Especialista em Redes",
+        experienceTime: "10 anos de experiência",
+        hourValue: 190.00
+    }
+
+    const mentor8 = {
+        image: Man4,
+        name: "Vitoria Lima",
+        role: "QA Senior",
+        experienceTime: "6 anos de experiência",
+        hourValue: 120.00
+    }
+
     mentorsArray.push(mentor1);
     mentorsArray.push(mentor2);
     mentorsArray.push(mentor3);
     mentorsArray.push(mentor4);
     mentorsArray.push(mentor5);
     mentorsArray.push(mentor6);
+    mentorsArray.push(mentor7);
+    mentorsArray.push(mentor8);
 
     return mentorsArray
 }
