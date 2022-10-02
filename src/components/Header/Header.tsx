@@ -5,7 +5,7 @@ export function Header() {
     return (
         <header>
             <div className='headerItems'>
-                <h1>{"< Dev Path />"}</h1>
+                <h1>{"< DevPath />"}</h1>
                 <PagTab content={"Find your path"} />
                 <PagTab content={"Mentoring"} />
             </div>

@@ -1,0 +1,30 @@
+.mentorPage {
+    display: flex;
+    align-items: center;
+}
+
+#infos {
+    padding: auto 30px;
+
+    width: 40%;
+    height: 620px;
+
+    background-color: #c2d74d;
+    color: white;
+
+    border-radius: 5px;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.paragraph {
+    margin: 20px;
+
+    font-size: 20px;
+}
+
+#mentors {
+    display: flex;
+    flex-wrap: wrap;
+}

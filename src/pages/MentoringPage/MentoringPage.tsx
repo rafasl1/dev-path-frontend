@@ -1,0 +1,101 @@
+import { MentorCard } from '../../components/MentorCard/MentorCard'
+import { MentorCardContent } from '../../types/MentorCardContent'
+import Man1 from '../../assets/man1.svg'
+import Man2 from '../../assets/man(2)1.svg'
+import Man3 from '../../assets/man(3)1.svg'
+import Woman1 from '../../assets/woman(1)1.svg'
+import Woman2 from '../../assets/woman(2)1.svg'
+import Woman3 from '../../assets/woman(3)1.svg'
+import './styles.css'
+
+export function MentoringPage() {
+    return (
+        <main className='mentorPage'>
+
+            <div className='mentorsDiv'>
+                <input type="text"/>
+                <div id='mentors'>
+                    {getMentors().map(mentor => (
+                        <MentorCard 
+                            image={mentor.image}
+                            name={mentor.name} 
+                            role={mentor.role} 
+                            experienceTime={mentor.experienceTime} 
+                            hourValue={mentor.hourValue} 
+                        />
+                    ))}
+                </div>
+            </div>
+
+
+            <div id='infos'>
+                <h1>O que é uma mentoria?</h1>
+                <p className='paragraph'>Um mentor é alguem que já possui experiência em determinado assunto e consegue te auxliar a aprender esta habilidade, te dando dicas e auxiliando a encontrar o caminho ideal para atingir seu objetivo.</p>
+                <p className='paragraph'>Ter um mentor acelera seu desenvolvimento com a experiência que recebe de um profissional já experiente. Além disso, é uma ótima oportunidade para conhecer uma referência na área que pretende atuar. </p>
+                <p className='paragraph'>Algumas dicas...Busque por uma pessoa com a qual você tenha afinidade e que te inspire. Isso irá facilitar a criação de uma conexão. Use as horas de mentoria com sabedorias e sempre prepare os assuntos que possui dúvidas para enriquecer as conversas.</p>
+            </div>
+
+        </main>
+    )
+}
+
+export function getMentors(): Array<MentorCardContent> {
+    const mentorsArray: Array<MentorCardContent> = []
+
+    const mentor1 = {
+        image: Man1,
+        name: "Davi Lucas",
+        role: "Desenvolvedor Backend Senior",
+        experienceTime: "5 anos de experiência",
+        hourValue: 80.00
+    }
+
+    const mentor2 = {
+        image: Man2,
+        name: "Pietro Barbosa",
+        role: "Especialista desenvolvimento backend",
+        experienceTime: "10 anos de experiência",
+        hourValue: 180.00
+    }
+
+    const mentor3 = {
+        image: Man3,
+        name: "Rodrigo Freitas",
+        role: "Cloud Engineer Senior",
+        experienceTime: "6 anos de experiência",
+        hourValue: 200.00
+    }
+
+    const mentor4 = {
+        image: Woman1,
+        name: "Ana Sophia Azevedo",
+        role: "Especialista desenvolvimento mobile",
+        experienceTime: "8 anos de experiência",
+        hourValue: 150.00
+    }
+
+    const mentor5 = {
+        image: Woman2,
+        name: "Rafaela Pereira",
+        role: "Especialista em Frontend",
+        experienceTime: "7 anos de experiência",
+        hourValue: 140.00
+    }
+
+    const mentor6 = {
+        image: Woman3,
+        name: "Vitoria Lima",
+        role: "Desenvolvedora Backend Senior",
+        experienceTime: "5 anos de experiência",
+        hourValue: 100.00
+    }
+
+    mentorsArray.push(mentor1);
+    mentorsArray.push(mentor2);
+    mentorsArray.push(mentor3);
+    mentorsArray.push(mentor4);
+    mentorsArray.push(mentor5);
+    mentorsArray.push(mentor6);
+
+    return mentorsArray
+}

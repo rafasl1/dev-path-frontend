@@ -8,7 +8,6 @@ header {
     background-color: #26ADE4;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
-    border: 1px solid red;
 }
 
 h1 {
@@ -18,4 +17,23 @@ h1 {
 .headerItems {
     display: flex;
     align-items: center;
+}
+
+.mentorsDiv {
+    margin-top: 40px;
+
+    border: 1px solid red;
+
+    width: 60%;
+    height: 50%;
+}
+
+.infos {
+    border: 1px solid red;
+
+    width: 40%;
+}
+
+#searchBar {
+    width: 80%;
 }

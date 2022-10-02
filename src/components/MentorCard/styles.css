@@ -1,0 +1,14 @@
+#card {
+    font-size: 20px;
+    border: 1px solid blue;
+
+    width: 30%;
+    height: auto;
+
+    text-align: center;
+    vertical-align: middle;
+    line-height: 40px;
+
+    margin: 5px;
+    padding: 10px;
+}

@@ -1,8 +1,13 @@
-// import { useState } from 'react'
+import { MentoringPage } from "./pages/MentoringPage/MentoringPage"
 
 function App() {
-
-  return <h1>Conteúdo da página aqui</h1>
+  return (
+    <>
+      <div>
+        <MentoringPage />
+      </div>
+    </>
+  )
 }
 
 export default App
