@@ -1,0 +1,18 @@
+.pageTab {
+    background-color: #4DBCE9;
+    color: white;
+
+    width: 110px;
+    height: 40px;
+    top: 8px;
+    left: 104px;
+    
+    border: 1px solid red;
+    border-radius: 8px;
+
+    text-align: center;
+    vertical-align: middle;
+    line-height: 40px;
+
+    margin-left: 10px;
+}

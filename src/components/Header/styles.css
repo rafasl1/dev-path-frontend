@@ -1,0 +1,21 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    margin: 0px;
+    background-color: #26ADE4;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid red;
+}
+
+h1 {
+    margin: 20px 10px;
+}
+
+.headerItems {
+    display: flex;
+    align-items: center;
+}
