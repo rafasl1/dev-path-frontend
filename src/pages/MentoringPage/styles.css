@@ -29,3 +29,31 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+#searchMentor {
+    margin: 5px;
+    margin-left: 20px;
+
+    padding: 4px;
+    padding-left: 6px;
+
+    height: 25px;
+
+    background-color: #D2EDF8;
+
+    border-radius: 10px;
+
+    vertical-align: middle;
+    line-height: 25px;
+}
+
+#lupa {
+    padding-left: 5px;
+}
+
+#searchInput {
+    background-color: #D2EDF8;
+    border: 0px;
+    padding-left: 10px;
+    width: 300px;
+}

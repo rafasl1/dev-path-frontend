@@ -22,15 +22,11 @@ h1 {
 .mentorsDiv {
     margin-top: 40px;
 
-    border: 1px solid red;
-
     width: 60%;
     height: 50%;
 }
 
 .infos {
-    border: 1px solid red;
-
     width: 40%;
 }
 

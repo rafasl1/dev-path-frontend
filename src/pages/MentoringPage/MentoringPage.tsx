@@ -8,6 +8,7 @@ import Woman2 from '../../assets/woman(2)1.svg'
 import Woman3 from '../../assets/woman(3)1.svg'
 import Man4 from '../../assets/man(4)1.svg'
 import Man5 from '../../assets/man(5)1.svg'
+import Lupa from '../../assets/lupa.svg'
 import './styles.css'
 
 export function MentoringPage() {
@@ -15,7 +16,13 @@ export function MentoringPage() {
         <main className='mentorPage'>
 
             <div className='mentorsDiv'>
-                <input type="text"/>
+
+                <div id='searchMentor'>
+                    <img id='lupa' src={Lupa} />
+                    <input id='searchInput' type="text" placeholder='Busque seu mentor ideal aqui'/>
+                </div>
+
+
                 <div id='mentors'>
                     {getMentors().map(mentor => (
                         <MentorCard 
