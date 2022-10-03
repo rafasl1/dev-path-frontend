@@ -6,6 +6,7 @@ import Man3 from '../../assets/man(3)1.svg'
 import Woman1 from '../../assets/woman(1)1.svg'
 import Woman2 from '../../assets/woman(2)1.svg'
 import Woman3 from '../../assets/woman(3)1.svg'
+import Woman4 from '../../assets/woman(4)1.svg'
 import Man4 from '../../assets/man(4)1.svg'
 import Man5 from '../../assets/man(5)1.svg'
 import Lupa from '../../assets/lupa.svg'
@@ -38,10 +39,18 @@ export function MentoringPage() {
 
 
             <div id='infos'>
-                <h1>O que é uma mentoria?</h1>
-                <p className='paragraph'>Um mentor é alguem que já possui experiência em determinado assunto e consegue te auxliar a aprender esta habilidade, te dando dicas e auxiliando a encontrar o caminho ideal para atingir seu objetivo.</p>
-                <p className='paragraph'>Ter um mentor acelera seu desenvolvimento com a experiência que recebe de um profissional já experiente. Além disso, é uma ótima oportunidade para conhecer uma referência na área que pretende atuar. </p>
-                <p className='paragraph'>Algumas dicas...Busque por uma pessoa com a qual você tenha afinidade e que te inspire. Isso irá facilitar a criação de uma conexão. Use as horas de mentoria com sabedorias e sempre prepare os assuntos que possui dúvidas para enriquecer as conversas.</p>
+                <h1 id='title'>O que é uma mentoria?</h1>
+                <p id='titleLegend'>Um mentor é alguem que já possui experiência em determinado assunto e consegue te auxliar a aprender esta habilidade, te dando dicas e auxiliando a encontrar o caminho ideal para atingir seu objetivo.</p>
+
+                <div id='paragraph1'>
+                    <p className='paragraph'>Ter um mentor acelera seu desenvolvimento com a experiência que recebe de um profissional já experiente. Além disso, é uma ótima oportunidade para conhecer uma referência na área que pretende atuar. </p>
+                    <img src={Woman1} />
+                </div>
+                
+                <div id='paragraph2'>
+                    <img src={Man1} />
+                    <p className='paragraph'><b>Algumas dicas...</b><br />Busque por uma pessoa com a qual você tenha afinidade e que te inspire. Isso irá facilitar a criação de uma conexão. Use as horas de mentoria com sabedorias e sempre prepare os assuntos que possui dúvidas para enriquecer as conversas.</p>
+                </div>
             </div>
 
         </main>
