@@ -15,8 +15,6 @@
     display: flex;
     align-items: center;
 
-    border: 1px solid blue;
-
     align-items: center;
 
     height: 50%;
@@ -25,7 +23,6 @@
 #home-info-content-text {
     color: #FFFFFF;
     font-size: 37px;
-    border: 1px solid red;
 
     align-items: center;
 
