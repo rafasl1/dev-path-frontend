@@ -1,4 +1,4 @@
-#trails-page {
+.mentorPage {
     display: flex;
     align-items: center;
 }
@@ -29,7 +29,7 @@
 }
 
 .paragraph {
-    border: 1px solis black;
+    border: 1px solir black;
 
     margin: 20px;
 
@@ -44,7 +44,7 @@
     flex-wrap: wrap;
 }
 
-#searchTrail {
+#searchMentor {
     margin: 5px;
     margin-left: 20px;
 
