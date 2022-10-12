@@ -1,0 +1,17 @@
+#card {
+    background-color: #e6e6e6fb;
+    border-radius: 15px;
+
+    margin: auto 20px;
+
+    height: 40%;
+}
+
+#card-title {
+    color: #26ADE4;
+}
+
+ul {
+    display: table;
+    margin: 0 auto;
+}

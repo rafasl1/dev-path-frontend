@@ -1,0 +1,43 @@
+#home-info {
+    background-color: #D1E751;
+    margin: 30px 100px;
+    padding: 50px 20px;
+    border-radius: 30px;
+}
+
+#home-info-title {
+    color: #26ADE4;
+    font-size: 45px;
+    text-align:  center;
+}
+
+#home-info-content {
+    display: flex;
+    align-items: center;
+
+    border: 1px solid blue;
+
+    align-items: center;
+
+    height: 50%;
+}
+
+#home-info-content-text {
+    color: #FFFFFF;
+    font-size: 37px;
+    border: 1px solid red;
+
+    align-items: center;
+
+    width: 40%;
+
+    margin-right: 20px;
+    margin-left: 10%;
+}
+
+#trails {
+    display: flex;
+    align-items: center;
+
+    justify-content: center;
+}
