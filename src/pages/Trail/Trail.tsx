@@ -5,7 +5,7 @@ import './styles.css'
 export function Trail({ title, hours, levels, topics, carrerInfo, salaryRange, opportunities }: TrailInfo) {
 
     return (
-        <main>
+        <main id="trail-page">
 
             <div id="main-trail">
 
@@ -31,7 +31,7 @@ export function Trail({ title, hours, levels, topics, carrerInfo, salaryRange, o
 
             </div>
 
-            <div>
+            <div id="carrer">
                 <h1>Conheça a carreira</h1>
                 <p>{carrerInfo}</p>
 
