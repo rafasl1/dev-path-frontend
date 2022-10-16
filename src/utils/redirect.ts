@@ -5,7 +5,7 @@ export function redirect(path: string): void {
     if(location.includes(path)) {
         window.location.assign(location)
         return
-    }
+    } 
 
     window.location.assign(baseLocation + path)
 }
