@@ -70,3 +70,25 @@
 
     border: 1px solid blue;
 }
+
+.carrer-title {
+    color: #26ADE4;
+    font-size: 45px;
+
+}
+
+.carrer-box {
+    text-align: center;
+}
+
+#carrer-about-text {
+    font-size: 20px;
+}
+
+#carrer-salary-box-text {
+    font-size: 20px;
+}
+
+.carrer-opportunity-text {
+    font-size: 20px;
+}

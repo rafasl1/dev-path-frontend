@@ -32,22 +32,28 @@ export function Trail({ title, hours, levels, topics, carrerInfo, salaryRange, o
             </div>
 
             <div id="carrer">
-                <h1>Conheça a carreira</h1>
-                <p>{carrerInfo}</p>
+                <div className="carrer-box">
+                    <h1 className="carrer-title">Conheça a carreira</h1>
+                    <p id="carrer-about-text">{carrerInfo}</p>
+                </div>
 
-                <h1>Faixa salarial da carreira:</h1>
-                <p>Salários entre R${salaryRange[0]} - R${salaryRange[1]}</p>
+                <div className="carrer-box">
+                    <h1 className="carrer-title">Faixa salarial da carreira:</h1>
+                    <b id="carrer-salary-box-text">Salários entre R${salaryRange[0]} - R${salaryRange[1]}</b>
+                </div>
 
-                <h1>Vagas na área:</h1>
-                {opportunities.map(opportunities => {
-                    return (
-                    <div>
-                        <h3>{opportunities.title}</h3>
-                        <p>{opportunities.location}</p>
-                        <p>{opportunities.type}</p>
-                        <p>{opportunities.seniority}</p>
-                    </div>
-                ) })}
+                <div className="carrer-box">
+                    <h1 className="carrer-title">Vagas na área:</h1>
+                    {opportunities.map(opportunities => {
+                        return (
+                        <div>
+                            <h3>{opportunities.title}</h3>
+                            <p className="carrer-opportunity-text">{opportunities.location}</p>
+                            <p  className="carrer-opportunity-text">{opportunities.type}</p>
+                            <p  className="carrer-opportunity-text">{opportunities.seniority}</p>
+                        </div>
+                    ) })}
+                </div>
 
             </div>
 
