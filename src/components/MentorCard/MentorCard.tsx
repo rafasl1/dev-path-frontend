@@ -3,7 +3,7 @@ import './styles.css'
 
 export function MentorCard (props: MentorCardContent) {
     return (
-        <div id="card">
+        <div id="mentor-card">
             <img src={props.image}/>
             <h3>{props.name}</h3>
             <div className="cardContent">{props.role}</div>

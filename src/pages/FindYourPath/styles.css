@@ -1,19 +1,26 @@
-.mentorPage {
+#trails-page {
     display: flex;
     align-items: center;
 }
 
-#infos {
+#trails-div {
+    margin-top: 40px;
+
+    width: 50%;
+    height: 50%;
+}
+
+#trails-infos {
     margin: 10px auto;
-    padding: auto 30px;
+    padding: auto 50px;
 
     width: 38%;
-    height: 620px;
+    height: 670px;
 
     background-color: #c6dc4c;
     color: white;
 
-    border-radius: 5px;
+    border-radius: 15px;
 
     text-align: center;
 }
@@ -29,8 +36,6 @@
 }
 
 .paragraph {
-    border: 1px solir black;
-
     margin: 20px;
 
     font-size: 20px;
@@ -39,9 +44,11 @@
     height: 100px;
 }
 
-#mentors {
+#trails-div-list {
     display: flex;
     flex-wrap: wrap;
+
+    text-align: center;
 }
 
 #searchMentor {

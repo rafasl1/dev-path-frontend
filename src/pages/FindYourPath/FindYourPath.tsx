@@ -12,7 +12,7 @@ export function FindYourPath() {
     return (
         <main id='trails-page'>
 
-            <div className='mentorsDiv'>
+            <div id='trails-div'>
 
                 <div id='searchTrail'>
                     <img id='lupa' src={Lupa} />
@@ -20,7 +20,7 @@ export function FindYourPath() {
                 </div>
 
 
-                <div id='mentors'>
+                <div id='trails-div-list'>
                     {getAnyTrails().map(trail => (
                         <TrailCard 
                             trailTitle={trail.trailTitle} 
@@ -32,7 +32,7 @@ export function FindYourPath() {
             </div>
 
 
-            <div id='infos'>
+            <div id='trails-infos'>
                 <h1 id='title'>O que é uma trilha?</h1>
                 <p id='titleLegend'>Aqui no DevPath uma trilha é uma jornada de aprendizado onde você encontra os melhor conteúdos para aprender do início o assunto escolhido. Garantimos que os conteúdos indicados são confiáveis e verídicos para que você possa se preocupar somente com o seu aprendizado.</p>
 
