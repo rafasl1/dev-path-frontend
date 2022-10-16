@@ -46,7 +46,7 @@ export function Trail({ title, hours, levels, topics, carrerInfo, salaryRange, o
                     <h1 className="carrer-title">Vagas na área:</h1>
                     {opportunities.map(opportunities => {
                         return (
-                        <div>
+                        <div id="carrer-opportunity-card">
                             <h3>{opportunities.title}</h3>
                             <p className="carrer-opportunity-text">{opportunities.location}</p>
                             <p  className="carrer-opportunity-text">{opportunities.type}</p>

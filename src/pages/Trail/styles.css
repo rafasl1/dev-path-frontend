@@ -89,6 +89,16 @@
     font-size: 20px;
 }
 
+#carrer-opportunity-card {
+    background-color: #26ADE4;
+    color: #FFFFFF;
+    
+    border-radius: 15px;
+
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
 .carrer-opportunity-text {
     font-size: 20px;
 }
