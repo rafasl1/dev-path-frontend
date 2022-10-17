@@ -17,6 +17,7 @@
 
 #trail-learn-list {
     text-align: left;
+    color: black;
 }
 
 #card-title {
@@ -27,4 +28,12 @@ ul {
     list-style-type: none;
     display: table;
     margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+b {
+    color: black;
 }
