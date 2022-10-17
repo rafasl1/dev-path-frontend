@@ -20,11 +20,13 @@ export function Home() {
             <div id="trails">
                 {getAnyTrails().map(trail => {
                     return (
-                        <TrailCard 
-                            trailTitle={trail.trailTitle} 
-                            slugName={trail.slugName} 
-                            learnList={trail.learnList} 
-                        />
+                        <div className='trail-card-in-menu'>
+                            <TrailCard 
+                                trailTitle={trail.trailTitle} 
+                                slugName={trail.slugName} 
+                                learnList={trail.learnList} 
+                            />
+                        </div>
                     )
                 })}
             </div>
@@ -62,8 +64,7 @@ function getAnyTrails() {
         learnList: [
             "Conceito de Cloud",
             "Arquitetura de Cloud",
-            "AWS",
-            "GCP"
+            "AWS"
         ]
     }
 

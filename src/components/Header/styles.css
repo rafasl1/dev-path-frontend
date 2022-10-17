@@ -3,6 +3,11 @@
     padding: 0;
 }
 
+a {
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
 header {
     margin: 0px;
     background-color: #26ADE4;
