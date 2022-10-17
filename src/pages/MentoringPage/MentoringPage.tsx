@@ -71,7 +71,7 @@ export function getMentors(): Array<MentorCardContent> {
     const mentor2 = {
         image: Man2,
         name: "Pietro Barbosa",
-        role: "Especialista desenvolvimento backend",
+        role: "Especialista em Backend",
         experienceTime: "10 anos de experiência",
         hourValue: 180.00
     }
