@@ -1,14 +1,13 @@
-#trails-page {
+.mentorPage {
     display: flex;
-    align-items: center;
 }
 
-#infos {
-    margin: 10px auto;
-    padding: auto 30px;
+#mentors-infos {
+    margin: 40px 20px;
+    padding: auto 60px;
 
-    width: 38%;
-    height: 620px;
+    width: 40%;
+    height: auto;
 
     background-color: #c6dc4c;
     color: white;

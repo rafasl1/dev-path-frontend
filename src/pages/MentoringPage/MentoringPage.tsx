@@ -38,7 +38,7 @@ export function MentoringPage() {
             </div>
 
 
-            <div id='infos'>
+            <div id='mentors-infos'>
                 <h1 id='title'>O que é uma mentoria?</h1>
                 <p id='titleLegend'>Um mentor é alguem que já possui experiência em determinado assunto e consegue te auxliar a aprender esta habilidade, te dando dicas e auxiliando a encontrar o caminho ideal para atingir seu objetivo.</p>
 
