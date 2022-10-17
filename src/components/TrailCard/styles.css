@@ -5,15 +5,18 @@
     font-size: 20px;
     border-radius: 5px;
 
-    width: 400px;
+    width: 350px;
     height: auto;
 
     text-align: center;
-    vertical-align: middle;
     line-height: 40px;
 
-    margin: 20px auto;
+    margin: 20px 5px;
     padding: 10px;
+}
+
+#trail-learn-list {
+    text-align: left;
 }
 
 #card-title {

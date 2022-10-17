@@ -1,17 +1,16 @@
 #trails-page {
     display: flex;
-    border: 1px solid red;
 }
 
 #trails-div {
     margin-top: 40px;
 
-    width: 50%;
+    width: 60%;
     height: 50%;
 }
 
 #trails-infos {
-    margin: 10px auto;
+    margin: 40px auto;
     padding: auto 50px;
 
     width: 38%;
@@ -48,7 +47,7 @@
     display: flex;
     flex-wrap: wrap;
 
-    text-align: center;
+    justify-content: space-around;
 }
 
 #searchMentor {

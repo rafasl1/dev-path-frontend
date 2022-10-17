@@ -7,11 +7,13 @@ export function TrailCard(props: TrailCardInfo) {
         <div id="trail-card" onClick={() => {redirect("find-your-path/trail")}}>
             <h3 id='card-title'>{props.trailTitle}</h3>
             <b>O que você vai aprender?</b>
-            <ul>
-                {props.learnList.map(learnItem => {
-                    return (<li>{"> " + learnItem}</li>)
-                })}
-            </ul>
+            <div id='trail-learn-list'>
+                <ul>
+                    {props.learnList.map(learnItem => {
+                        return (<li>{"> " + learnItem}</li>)
+                    })}
+                </ul>
+            </div>
         </div>
     )
 }
