@@ -1,8 +1,10 @@
 #home-info {
     background-color: #D1E751;
     margin: 30px 100px;
-    padding: 50px 20px;
+    padding: 50px 0px;
     border-radius: 30px;
+
+    height: 60%;
 }
 
 #home-info-title {
@@ -15,9 +17,9 @@
     display: flex;
     align-items: center;
 
-    align-items: center;
+    text-align: center;
 
-    height: 50%;
+    height: 70%;
 }
 
 #home-info-content-text {
@@ -26,9 +28,9 @@
 
     align-items: center;
 
-    width: 40%;
+    width: 70%;
 
-    margin-right: 20px;
+    margin-right: 50px;
     margin-left: 10%;
 }
 
