@@ -16,7 +16,9 @@ function App() {
               <Route path="/" element={<Home/>} />
               <Route path="/mentoring" element={<MentoringPage />} />
               <Route path="/find-your-path" element={<FindYourPath />} />
-              <Route path="/find-your-path/:trail" element={<Trail />}/>
+              <Route path="/:trailId" element={<Trail />} />
+              <Route path="/find-your-path/:trailId" index element={<Trail />} 
+              />
           </Routes>
 
 

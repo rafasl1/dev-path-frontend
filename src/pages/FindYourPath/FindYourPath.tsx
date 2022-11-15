@@ -7,8 +7,22 @@ import Education from '../../assets/education.svg'
 
 
 import './styles.css'
+import { useEffect, useState } from 'react';
+import { TrailAPI } from '../../types/TrailAPI';
+import axios from 'axios';
 
 export function FindYourPath() {
+    const [trailsData, setTrailsData] = useState<Array<TrailAPI>>([])
+
+    useEffect(() => {
+        getTrailsData()
+    }, [])
+    
+    const getTrailsData = async () => {
+        const data = (await axios.get("https://dev-path.herokuapp.com/trail/all")).data;
+        setTrailsData(data.slice(0,6))
+    }
+
     return (
         <main id='trails-page'>
 
@@ -21,12 +35,8 @@ export function FindYourPath() {
 
 
                 <div id='trails-div-list'>
-                    {getAnyTrails().map(trail => (
-                        <TrailCard 
-                            trailTitle={trail.trailTitle} 
-                            slugName={trail.slugName} 
-                            learnList={trail.learnList} 
-                        />
+                    {trailsData.map((trail, index) => (
+                        <TrailCard key={index} {...trail}/>
                     ))}
                 </div>
             </div>
