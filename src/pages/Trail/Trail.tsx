@@ -1,20 +1,16 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { backendTrail } from "../../mocks/backendTrail";
-import { cloudTrail } from "../../mocks/cloudTrail";
-import { dataAnalystTrail } from "../../mocks/dataAnalystTrail";
-import { dataBaseTrail } from "../../mocks/dataBaseTrail";
-import { frontendTrail } from "../../mocks/frontendTrail";
-import { qaTrail } from "../../mocks/qaTrail";
-import { TrailInfo } from "../../types/Trail";
-import { TrailAPI } from "../../types/TrailAPI";
-import './styles.css'
 import axios from 'axios';
+import Modal from 'react-modal';
+
+import { TopicAPI, TrailAPI } from "../../types/TrailAPI";
+import './styles.css'
 
 
 export function Trail() {
 
     const [trail, setTrail] = useState<TrailAPI>()
+    const [topicOpened, setTopicOpened] = useState<TopicAPI>()
     let { trailId } = useParams();
 
     useEffect(() => {
@@ -23,9 +19,19 @@ export function Trail() {
     
     const getTrailData = async (trailId: string) => {
         const data = (await axios.get("https://dev-path.herokuapp.com/trail/" + trailId)).data;
-        console.log("trail id: " + trailId)
-        console.log(data)
         setTrail(data)
+    }
+
+    const getModalStyle = () => {
+        let style = Modal.defaultStyles
+        if (style.content) {
+            style.content.width = '240px'
+            style.content.height = '240px'
+            style.content.textAlign = 'center'
+            style.content.marginLeft = '45%'
+            style.content.marginTop = '15%'
+        }
+        return style
     }
 
     if(!trail) {
@@ -47,9 +53,9 @@ export function Trail() {
 
                 <div id="main-trail-topics">
                     <ul id="main-trail-topics-list">
-                        {trail.topics.map((topic, index) => { 
+                        {trail.topics.reverse().map((topic, index) => { 
                             return (
-                                <div key={index} id="main-trail-topic-list-item">
+                                <div key={index} id="main-trail-topic-list-item" onClick={() => setTopicOpened(topic)}>
                                     <div id="main-trail-topic-ball"><p>{index + 1}</p></div>
                                     <li id="main-trail-topic-text">{topic.name}</li>
                                 </div>
@@ -57,6 +63,24 @@ export function Trail() {
                         )}
                     </ul>
                 </div>
+
+                {topicOpened && (
+                    <Modal 
+                        isOpen={true} 
+                        style={getModalStyle()}
+                    >
+                    {topicOpened.subTopics.map(subTopic => {
+                        return (
+                            <div>
+                                <label>
+                                    <input type="checkbox" />
+                                    {subTopic.name}
+                                </label>
+                            </div>
+                        )
+                    })}
+                </Modal>
+                )}
 
             </div>
 

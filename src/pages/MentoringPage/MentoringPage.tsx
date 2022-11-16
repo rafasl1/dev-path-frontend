@@ -11,8 +11,23 @@ import Man4 from '../../assets/man(4)1.svg'
 import Man5 from '../../assets/man(5)1.svg'
 import Lupa from '../../assets/lupa.svg'
 import './styles.css'
+import { useEffect, useState } from 'react'
+import { TrailAPI } from '../../types/TrailAPI'
+import axios from 'axios'
+import { MentorAPI } from '../../types/MentorAPI'
 
 export function MentoringPage() {
+    const [mentorsData, setMentorsData] = useState<Array<MentorAPI>>([])
+
+    useEffect(() => {
+        getMentorsData()
+    }, [])
+    
+    const getMentorsData = async () => {
+        const data = (await axios.get("https://dev-path.herokuapp.com/mentor/all")).data;
+        setMentorsData(data.slice(0,8))
+    }
+
     return (
         <main className='mentorPage'>
 
@@ -25,13 +40,13 @@ export function MentoringPage() {
 
 
                 <div id='mentors'>
-                    {getMentors().map(mentor => (
-                        <MentorCard 
-                            image={mentor.image}
-                            name={mentor.name} 
-                            role={mentor.role} 
-                            experienceTime={mentor.experienceTime} 
-                            hourValue={mentor.hourValue} 
+                    {mentorsData.map((mentor, index) => (
+                        <MentorCard key={index}
+                            image={Man1}
+                            name={mentor.user.name} 
+                            role={"Desenvolvedor Backend Senior"} 
+                            experienceTime={"Experiência de 5 anos"} 
+                            hourValue={mentor.hourCost} 
                         />
                     ))}
                 </div>
