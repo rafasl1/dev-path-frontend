@@ -99,3 +99,51 @@
 .carrer-opportunity-text {
     font-size: 20px;
 }
+
+#modal-title {
+    margin-top: 50px;
+}
+
+#modal-div-x-icon {
+    width: 25px;
+    height: 25px;
+
+    align-items: center;
+
+    position: absolute;
+    right: 30px;
+}
+
+#modal-div-subtopic-item-div {
+    font-size: 20px;
+}
+
+.modal-div-subtopic-item-input {
+    margin-right: 8px;
+    width: 20px;
+    height: 20px;
+    border: 1px solid red;
+}
+
+.modal-div-subtopic-item-input-label {
+    display: flex;
+    margin-left: 30px;
+
+    width: auto;
+
+    margin-top: 5px;
+}
+
+#modal-submit-button {
+    color: #FFFFFF;
+    background-color: #a4b63c;
+
+    border: 0;
+    border-radius: 8px;
+
+    width: 100px;
+    height: 40px;
+    
+    margin-top: 20px;
+    margin-bottom: 12px;
+}

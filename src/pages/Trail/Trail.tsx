@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import axios from 'axios';
 import Modal from 'react-modal';
+import XIcon from '../../assets/x-icon.svg'
 
 import { TopicAPI, TrailAPI } from "../../types/TrailAPI";
 import './styles.css'
@@ -16,6 +17,10 @@ export function Trail() {
     useEffect(() => {
         getTrailData(trailId || "")
     }, [])
+
+    useEffect(() => {
+        
+    }, [topicOpened])
     
     const getTrailData = async (trailId: string) => {
         const data = (await axios.get("https://dev-path.herokuapp.com/trail/" + trailId)).data;
@@ -25,13 +30,18 @@ export function Trail() {
     const getModalStyle = () => {
         let style = Modal.defaultStyles
         if (style.content) {
-            style.content.width = '240px'
-            style.content.height = '240px'
+            style.content.width = '400px'
+            style.content.height = 'fit-content'
             style.content.textAlign = 'center'
-            style.content.marginLeft = '45%'
+            style.content.marginLeft = '40%'
             style.content.marginTop = '15%'
         }
         return style
+    }
+
+    const closeModal = () => {
+        setTopicOpened(undefined)
+        console.log("Chamou pra fechar")
     }
 
     if(!trail) {
@@ -66,19 +76,24 @@ export function Trail() {
 
                 {topicOpened && (
                     <Modal 
-                        isOpen={true} 
+                        isOpen={topicOpened != undefined} 
                         style={getModalStyle()}
                     >
-                    {topicOpened.subTopics.map(subTopic => {
-                        return (
-                            <div>
-                                <label>
-                                    <input type="checkbox" />
-                                    {subTopic.name}
-                                </label>
-                            </div>
-                        )
-                    })}
+                        <div id="modal-div-x-icon">
+                            <img src={XIcon} id="x-icon" onClick={() => closeModal()}/>
+                        </div>
+                        <h1 id="modal-title">O que você deve estudar sobre {topicOpened.name}?</h1>
+                        {topicOpened.subTopics.map(subTopic => {
+                            return (
+                                <div id="modal-div-subtopic-item-div">
+                                    <label className="modal-div-subtopic-item-input-label">
+                                        <input type="checkbox" className="modal-div-subtopic-item-input" />
+                                        <b>{subTopic.name}</b>:{subTopic.content}
+                                    </label>
+                                </div>
+                            )
+                        })}
+                        <button id="modal-submit-button" type="button">Atualizar</button>
                 </Modal>
                 )}
 
