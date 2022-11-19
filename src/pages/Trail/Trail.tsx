@@ -30,18 +30,18 @@ export function Trail() {
     const getModalStyle = () => {
         let style = Modal.defaultStyles
         if (style.content) {
-            style.content.width = '400px'
+            style.content.margin = 'auto'
+            style.content.width = 'fit-content'
             style.content.height = 'fit-content'
             style.content.textAlign = 'center'
-            style.content.marginLeft = '40%'
-            style.content.marginTop = '15%'
+            style.content.marginLeft = '30%'
+            style.content.marginTop = '12%'
         }
         return style
     }
 
     const closeModal = () => {
         setTopicOpened(undefined)
-        console.log("Chamou pra fechar")
     }
 
     if(!trail) {
@@ -88,7 +88,7 @@ export function Trail() {
                                 <div id="modal-div-subtopic-item-div">
                                     <label className="modal-div-subtopic-item-input-label">
                                         <input type="checkbox" className="modal-div-subtopic-item-input" />
-                                        <b>{subTopic.name}</b>:{subTopic.content}
+                                        <b className="modal-subtopic-item-name">{subTopic.name}:</b>{subTopic.content}
                                     </label>
                                 </div>
                             )
