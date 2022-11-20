@@ -127,6 +127,8 @@
 
 .modal-subtopic-item-name {
     margin-right: 8px;
+    color: #26ADE4;
+    text-decoration: underline;
 }
 
 .modal-div-subtopic-item-input-label {
@@ -150,4 +152,8 @@
     
     margin-top: 20px;
     margin-bottom: 12px;
+}
+
+.link {
+    color: black;
 }

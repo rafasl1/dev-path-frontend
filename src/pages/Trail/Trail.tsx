@@ -34,7 +34,6 @@ export function Trail() {
             style.content.width = 'fit-content'
             style.content.height = 'fit-content'
             style.content.textAlign = 'center'
-            style.content.marginLeft = '30%'
             style.content.marginTop = '12%'
         }
         return style
@@ -82,13 +81,13 @@ export function Trail() {
                         <div id="modal-div-x-icon">
                             <img src={XIcon} id="x-icon" onClick={() => closeModal()}/>
                         </div>
-                        <h1 id="modal-title">O que você deve estudar sobre {topicOpened.name}?</h1>
+                        <h1 id="modal-title">Onde você pode estudar sobre<br/>{topicOpened.name}:</h1>
                         {topicOpened.subTopics.map(subTopic => {
                             return (
                                 <div id="modal-div-subtopic-item-div">
                                     <label className="modal-div-subtopic-item-input-label">
                                         <input type="checkbox" className="modal-div-subtopic-item-input" />
-                                        <b className="modal-subtopic-item-name">{subTopic.name}:</b>{subTopic.content}
+                                        <a href={""+subTopic.content} className="modal-subtopic-item-name">{subTopic.name}</a>
                                     </label>
                                 </div>
                             )
