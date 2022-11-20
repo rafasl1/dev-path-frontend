@@ -1,0 +1,86 @@
+#profile-page {
+    display: flex;
+}
+
+#profile-info {
+    background-color: greenyellow;
+}
+
+#profile-trails {
+    background-color: yellow;
+}
+
+#profile-user-info-div {
+    margin: 40px auto;
+    padding: auto auto;
+
+    width: 30%;
+    height: 670px;
+    
+    border-radius: 15px;
+
+    text-align: center;
+
+}
+
+#user-avatar {
+
+    width: 200px;
+
+    margin-top: 30px;
+}
+
+#profile-user-name {
+    color: black;
+
+    margin-top: 8px;
+}
+
+#profile-user-became-mentor-button {
+    border: 0px;
+    border-radius: 5px;
+    background-color: #26ADE4;
+    color: white;
+
+    width: 170px;
+    height: 50px;
+}
+
+#user-tag {
+    margin-top: 20px;
+    margin-bottom: 0px;
+
+    background-color: #c6dc4c;
+    color: white;
+
+    border-radius: 5px;
+    border: 0px;
+
+    width: 70px;
+    height: 30px;
+}
+
+#profile-user-trails-div {
+    margin: 40px auto;
+    padding: auto 50px;
+
+    width: 60%;
+    height: auto;
+
+    background-color: #c6dc4c;
+    color: white;
+
+    border-radius: 15px;
+
+    text-align: center;
+}
+
+#profile-user-trail-title {
+    font-size: xx-large;
+    color: black;
+}
+
+#profile-user-trail-subtitle {
+    font-size: large;
+    color: black;
+}

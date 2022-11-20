@@ -8,7 +8,7 @@ export function Header() {
             <div className='headerItems'>
                 <h1><Link to={"/"}>{"< DevPath />"}</Link></h1>
                 <PagTab content={"Find your path"} route={"find-your-path"}/>
-                <PagTab content={"Mentoring"}  route={"mentoring"}/>
+                <PagTab content={"Mentoring"}  route={"mentoria"}/>
             </div>
         </header>
     )
