@@ -4,13 +4,13 @@
 
 #registration-box {
     margin: auto;
-    padding-top: 10px;
+    padding: 10px 30px;
 
     background-color: #26ADE4;
 
     margin-top: 100px;
 
-    width: 400px;
+    width: fit-content;
     height: fit-content;
 
     border-radius: 15px;

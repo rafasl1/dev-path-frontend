@@ -9,7 +9,7 @@ export function Registration() {
     return (
         <div id="registration-div-page">
             <div id="registration-box">
-                <h1 id="registration-box-title">{"Cadastre-se no <DevPath /> !"}</h1>
+                <h1 id="registration-box-title">{"Cadastre-se no <DevPath />!"}</h1>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="input-form">
                         <label>

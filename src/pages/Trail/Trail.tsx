@@ -106,7 +106,7 @@ export function Trail() {
 
                 <div className="carrer-box">
                     <h1 className="carrer-title">Faixa salarial da carreira:</h1>
-                    <b id="carrer-salary-box-text">Salários entre R${trail.averageSalary}</b>
+                    <b id="carrer-salary-box-text">Salários {trail.averageSalary}</b>
                 </div>
 
                 <div className="carrer-box">
