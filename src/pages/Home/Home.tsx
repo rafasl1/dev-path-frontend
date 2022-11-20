@@ -3,8 +3,6 @@ import { useEffect, useState } from 'react';
 import Image from '../../assets/home-image.svg'
 import { TrailCard } from '../../components/TrailCard/TrailCard';
 import { TrailAPI } from '../../types/TrailAPI';
-import { TrailCardInfo } from '../../types/TrailCardInfo';
-import { getSlugFromName } from '../../utils/slug';
 import './styles.css'
 
 export function Home() {
