@@ -1,9 +1,23 @@
+import axios from "axios";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router";
+import { UserAPI } from '../../types/User';
 import './styles.css'
 
 export function Login() {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = (data: any) => console.log(data);
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const navigate = useNavigate();
+
+    const onSubmit = async (formData: any) => { 
+        console.log(formData) 
+
+        const data: UserAPI = (await axios.get("https://dev-path.herokuapp.com/user/" + formData.email)).data;
+
+        if(data) {
+            localStorage.setItem("loged-user", JSON.stringify(data))
+            navigate("/perfil");
+        }
+    };
 
     return (
         <div id="registration-div-page">
