@@ -87,7 +87,7 @@ export function Trail() {
                                 <div id="modal-div-subtopic-item-div">
                                     <label className="modal-div-subtopic-item-input-label">
                                         <input type="checkbox" className="modal-div-subtopic-item-input" />
-                                        <a href={""+subTopic.content} className="modal-subtopic-item-name">{subTopic.name}</a>
+                                        <a href={""+subTopic.content} target="_blank" className="modal-subtopic-item-name">{subTopic.name}</a>
                                     </label>
                                 </div>
                             )
@@ -114,7 +114,7 @@ export function Trail() {
                     {trail.jobs.map((opportunities, index) => {
                         return (
                         <div key={index} id="carrer-opportunity-card">
-                            <h3>{opportunities.title}</h3>
+                            <h3><a className="carrer-title-link" target="_blank" href={opportunities.link + ""}>{opportunities.title}</a></h3>
                             <p className="carrer-opportunity-text">{opportunities.location}</p>
                             <p  className="carrer-opportunity-text">{opportunities.period}</p>
                             <p  className="carrer-opportunity-text">{opportunities.role}</p>

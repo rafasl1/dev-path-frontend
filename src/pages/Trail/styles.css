@@ -157,3 +157,7 @@
 .link {
     color: black;
 }
+
+.carrer-title-link {
+    text-decoration: underline;
+}
