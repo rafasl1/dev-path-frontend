@@ -56,7 +56,7 @@ export function Trail() {
                 <h1 id="main-trail-title">Trilha{" " + trail.name}</h1>
 
                 <div id="main-trail-subtitle">
-                    <b id="main-trail-subtitle-time">Tempo estimado: {trail.duration}</b>
+                    <b id="main-trail-subtitle-time">Tempo estimado: {trail.duration} horas</b>
                     <b>Níveis: {trail.topics.length}</b>
                 </div>
 

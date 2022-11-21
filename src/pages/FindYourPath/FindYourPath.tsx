@@ -28,12 +28,7 @@ export function FindYourPath() {
 
             <div id='trails-div'>
 
-                <div id='searchTrail'>
-                    <img id='lupa' src={Lupa} />
-                    <input id='searchInput' type="text" placeholder='Busque sua trilha ideal aqui'/>
-                </div>
-
-
+                <h1 className='list-title'>Trilhas:</h1>
                 <div id='trails-div-list'>
                     {trailsData.map((trail, index) => (
                         <TrailCard key={index} {...trail}/>

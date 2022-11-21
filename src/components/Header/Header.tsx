@@ -7,7 +7,7 @@ export function Header() {
         <header>
             <div className='headerItems'>
                 <h1><Link to={"/"}>{"< DevPath />"}</Link></h1>
-                <PagTab content={"Find your path"} route={"find-your-path"}/>
+                <PagTab content={"Encontre seu caminho"} route={"find-your-path"}/>
                 <PagTab content={"Mentoria"}  route={"mentoria"}/>
                 <PagTab content={"Perfil"}  route={"login"}/>
             </div>
