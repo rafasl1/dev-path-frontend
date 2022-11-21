@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 import { UserAPI } from '../../types/User';
 import './styles.css'
 
@@ -44,7 +45,8 @@ export function Login() {
                             <input className="input-text" type="password" {...register("password",  { required: true })} />    
                         </label>
                     </div>
-                    <input id="submit-button" type="submit"  />
+                    <input id="submit-button" type="submit"  /><br/>
+                    <Link id="registration-link" to={"/cadastro"}>Não tem conta? Crie a sua!</Link>
                 </form>
             </div>
         </div>
