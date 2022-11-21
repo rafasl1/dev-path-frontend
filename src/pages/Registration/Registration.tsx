@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import { UserAPI } from '../../types/User';
@@ -26,6 +27,14 @@ export function Registration() {
 
     };
     console.log(watch("example"));
+
+    useEffect(() => {
+        const user = localStorage.getItem("loged-user")
+        if (user) {
+            navigate("/perfil")
+        }
+    }, [])
+
 
     return (
         <div id="registration-div-page">

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import { UserAPI } from '../../types/User';
@@ -7,6 +8,13 @@ import './styles.css'
 export function Login() {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const user = localStorage.getItem("loged-user")
+        if (user) {
+            navigate("/perfil")
+        }
+    }, [])
 
     const onSubmit = async (formData: any) => { 
         console.log(formData) 

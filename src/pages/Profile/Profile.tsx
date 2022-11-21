@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router'
 import Woman2 from '../../assets/woman(2)1.svg'
 import { TrailCard } from '../../components/TrailCard/TrailCard'
 import { TrailAPI } from '../../types/TrailAPI'
@@ -9,11 +10,14 @@ import './styles.css'
 export function Profile() {
     const [trailsData, setTrailsData] = useState<Array<TrailAPI>>([])
     const [userData, setUserData] = useState<UserAPI>()
+    const navigate = useNavigate();
 
     useEffect(() => {
         const user = localStorage.getItem("loged-user")
         if (user) {
             setUserData(JSON.parse(user))
+        } else {
+            navigate("/login")
         }
 
         getTrailsData()
