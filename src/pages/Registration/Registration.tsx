@@ -13,16 +13,22 @@ export function Registration() {
     const onSubmit = async (formData: any) => { 
         console.log(formData) 
 
-        const data: UserAPI = (await axios.post("https://dev-path.herokuapp.com/user/create", {
-            name: formData.name,
-            email: formData.email,
-            password: formData.password,
-            isMentor: false
-        })).data;
-
-        if(data) {
-            localStorage.setItem("loged-user", JSON.stringify(data))
-            navigate("/perfil");
+        try {
+            const response = (await axios.post("https://dev-path.herokuapp.com/user/create", {
+                name: formData.name,
+                email: formData.email,
+                password: formData.password,
+                isMentor: false
+            }));
+    
+            if(response.status == 200) {
+                localStorage.setItem("loged-user", JSON.stringify(response.data))
+                navigate("/perfil");
+            } else {
+                alert("Houve um erro ao fazer o seu cadastro. Tente novamente")
+            }
+        } catch(e) {
+            alert("Houve um erro ao fazer o seu cadastro. Tente novamente")
         }
 
 

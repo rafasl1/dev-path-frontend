@@ -20,11 +20,17 @@ export function Login() {
     const onSubmit = async (formData: any) => { 
         console.log(formData) 
 
-        const data: UserAPI = (await axios.get("https://dev-path.herokuapp.com/user/" + formData.email)).data;
-
-        if(data) {
-            localStorage.setItem("loged-user", JSON.stringify(data))
-            navigate("/perfil");
+        try {
+            const response = (await axios.get("https://dev-path.herokuapp.com/user/" + formData.email + "/" + formData.password));
+    
+            if(response.status == 200) {
+                localStorage.setItem("loged-user", JSON.stringify(response.data))
+                navigate("/perfil");
+            } else {
+                alert("Erro ao fazer login.\nVerifique se os campos email e senha estão corretos!")
+            }
+        } catch(e) {
+            alert("Erro ao fazer login.\nVerifique se os campos email e senha estão corretos!")
         }
     };
 
