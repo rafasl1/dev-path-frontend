@@ -6,7 +6,7 @@ import { getSlugFromName } from '../../utils/slug';
 
 export function TrailCard(trail: TrailAPI) {
     return (
-        <Link to={trail.id.toString()} itemProp=''>
+        <Link to={"/find-your-path/" + trail.id.toString()} itemProp=''>
         
             <div id="trail-card">
                 <h3 id='card-title'>{trail.name}</h3>
