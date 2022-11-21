@@ -4,13 +4,13 @@
 
     font-size: 20px;
     border-radius: 5px;
-
+    
     width: 350px;
     height: auto;
-
+    
     text-align: center;
     line-height: 40px;
-
+    
     margin: 20px 5px;
     padding: 10px;
 }
@@ -25,7 +25,7 @@
 }
 
 ul {
-    list-style-type: none;
+    list-style-type: circle;
     display: table;
     margin: 0 auto;
 }
