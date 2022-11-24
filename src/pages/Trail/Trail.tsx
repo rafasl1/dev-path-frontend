@@ -9,6 +9,7 @@ import UncheckStar from '../../assets/uncheck-star.png'
 
 import { TopicAPI, TrailAPI } from "../../types/TrailAPI";
 import './styles.css'
+import { UserAPI } from "../../types/User";
 
 
 export function Trail() {
@@ -16,11 +17,17 @@ export function Trail() {
     const [trail, setTrail] = useState<TrailAPI>()
     const [topicOpened, setTopicOpened] = useState<TopicAPI>()
     const [starIconToShow, setStarIconToShow] = useState(UncheckStar)
+    const [userData, setUserData] = useState<UserAPI>()
+
     let { trailId } = useParams();
     const navigate = useNavigate();
 
-
     useEffect(() => {
+        const user = localStorage.getItem("loged-user")
+        if (user) {
+            setUserData(JSON.parse(user))
+        }
+
         getTrailData(trailId || "")
     }, [])
 
@@ -49,6 +56,16 @@ export function Trail() {
         setTopicOpened(undefined)
     }
 
+    const handleStarClick = () => {
+        if (!userData) {
+            alert("Você precisa fazer login para salvar uma trilha")
+        } else {
+            setStarIconToShow(CheckStar)
+            alert("Trilha salva com sucesso")
+            // todo: adicionar chamada da api para salvar trilha
+        }
+    }
+
     if(!trail) {
         return <h1>Carregando dados...</h1>
     }
@@ -60,7 +77,7 @@ export function Trail() {
             <div id="main-trail">
 
                 <img src={Back} id="back-icon" onClick={() => navigate("/find-your-path")}/>
-                <img src={starIconToShow} id="star-icon"  />
+                <img src={starIconToShow} id="star-icon" alt="Salvar Trilha" onClick={handleStarClick}  />
                 <h1 id="main-trail-title">Trilha{" " + trail.name}</h1>
 
                 <div id="main-trail-subtitle">
