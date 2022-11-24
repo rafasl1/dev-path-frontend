@@ -4,6 +4,8 @@ import axios from 'axios';
 import Modal from 'react-modal';
 import XIcon from '../../assets/x-icon.svg'
 import Back from '../../assets/back.svg'
+import CheckStar from '../../assets/check-star.png'
+import UncheckStar from '../../assets/uncheck-star.png'
 
 import { TopicAPI, TrailAPI } from "../../types/TrailAPI";
 import './styles.css'
@@ -13,6 +15,7 @@ export function Trail() {
 
     const [trail, setTrail] = useState<TrailAPI>()
     const [topicOpened, setTopicOpened] = useState<TopicAPI>()
+    const [starIconToShow, setStarIconToShow] = useState(UncheckStar)
     let { trailId } = useParams();
     const navigate = useNavigate();
 
@@ -57,6 +60,7 @@ export function Trail() {
             <div id="main-trail">
 
                 <img src={Back} id="back-icon" onClick={() => navigate("/find-your-path")}/>
+                <img src={starIconToShow} id="star-icon"  />
                 <h1 id="main-trail-title">Trilha{" " + trail.name}</h1>
 
                 <div id="main-trail-subtitle">

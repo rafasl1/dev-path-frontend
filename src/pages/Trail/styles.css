@@ -176,3 +176,14 @@
     position: absolute;
     right: 89%;
 }
+
+#star-icon {
+    width: 40px;
+    height: 40px;
+
+    margin-top: 30px;
+    margin-left: 10px;
+
+    position: absolute;
+    right: 50%;
+}
