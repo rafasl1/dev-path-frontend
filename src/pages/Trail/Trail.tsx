@@ -117,7 +117,7 @@ export function Trail() {
                                 </div>
                             )
                         })}
-                        <button id="modal-submit-button" type="button">Atualizar</button>
+                        <button id={userData ? "modal-submit-button" : "modal-submit-button-disabled"} type="button" disabled={!userData}>Atualizar</button>
                 </Modal>
                 )}
 
