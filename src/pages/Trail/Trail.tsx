@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import axios from 'axios';
 import Modal from 'react-modal';
 import XIcon from '../../assets/x-icon.svg'
+import Back from '../../assets/back.svg'
 
 import { TopicAPI, TrailAPI } from "../../types/TrailAPI";
 import './styles.css'
@@ -13,6 +14,8 @@ export function Trail() {
     const [trail, setTrail] = useState<TrailAPI>()
     const [topicOpened, setTopicOpened] = useState<TopicAPI>()
     let { trailId } = useParams();
+    const navigate = useNavigate();
+
 
     useEffect(() => {
         getTrailData(trailId || "")
@@ -53,6 +56,7 @@ export function Trail() {
 
             <div id="main-trail">
 
+                <img src={Back} id="back-icon" onClick={() => navigate("/find-your-path")}/>
                 <h1 id="main-trail-title">Trilha{" " + trail.name}</h1>
 
                 <div id="main-trail-subtitle">
