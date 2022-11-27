@@ -13,8 +13,8 @@ export function TrailCard(trail: TrailAPI) {
                 <b>O que você vai aprender?</b>
                 <div id='trail-learn-list'>
                     <ul>
-                        {trail.topics.slice(0,3).map(topic => {
-                            return (<li>{topic.name.substring(0,30)}</li>)
+                        {trail.topics.slice(0,3).map((topic, index) => {
+                            return (<li key={index}>{topic.name.substring(0,30)}</li>)
                         })}
                     </ul>
                 </div>

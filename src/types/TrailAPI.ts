@@ -27,4 +27,5 @@ type SubTopicAPI = {
         id: number;
         name: String;
         content: String;
+        active?: boolean
 }

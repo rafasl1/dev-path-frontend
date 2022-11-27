@@ -18,8 +18,6 @@ export function Login() {
     }, [])
 
     const onSubmit = async (formData: any) => { 
-        console.log(formData) 
-
         try {
             const response = (await axios.get("https://dev-path.herokuapp.com/user/" + formData.email + "/" + formData.password));
     

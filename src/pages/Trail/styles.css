@@ -63,6 +63,18 @@
     margin-right: 30px;
 }
 
+#main-trail-topic-ball-unchecked {
+    width: 70px;
+    height: 70px;
+    background-color: #40413ede;
+    color: #FFFFFF;
+    border-radius: 50%;
+
+    line-height: 70px;
+
+    margin-right: 30px;
+}
+
 #carrer {
     background-color: #d2f2ff;
     padding: 30px;

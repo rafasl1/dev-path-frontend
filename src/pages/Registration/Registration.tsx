@@ -11,8 +11,6 @@ export function Registration() {
     const navigate = useNavigate();
 
     const onSubmit = async (formData: any) => { 
-        console.log(formData) 
-
         try {
             const response = (await axios.post("https://dev-path.herokuapp.com/user/create", {
                 name: formData.name,
@@ -33,8 +31,6 @@ export function Registration() {
 
 
     };
-    console.log(watch("example"));
-
     useEffect(() => {
         const user = localStorage.getItem("loged-user")
         if (user) {

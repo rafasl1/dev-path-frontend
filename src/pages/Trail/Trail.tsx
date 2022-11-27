@@ -18,6 +18,7 @@ export function Trail() {
     const [topicOpened, setTopicOpened] = useState<TopicAPI>()
     const [starIconToShow, setStarIconToShow] = useState(UncheckStar)
     const [userData, setUserData] = useState<UserAPI>()
+    const [userDataIsStudyingTrail, setuserDataIsStudyingTrail] = useState<boolean>(false)
 
     let { trailId } = useParams();
     const navigate = useNavigate();
@@ -31,14 +32,6 @@ export function Trail() {
 
         getTrailData(trailId || "")
     }, [])
-
-    useEffect(() => {
-        
-    }, [topicOpened])
-
-    useEffect(() => {
-        
-    }, [starIconToShow])
     
     const getTrailData = async (trailId: string) => {
         const data = (await axios.get("https://dev-path.herokuapp.com/trail/" + trailId)).data;
@@ -87,7 +80,22 @@ export function Trail() {
     }
 
     const getStarIconOnRender = (user: UserAPI) => {
-        return user.trails.filter(trail => trail.id.toString() == trailId).length > 0  ? CheckStar : UncheckStar
+        if (user.trails.filter(trail => trail.id.toString() == trailId).length > 0) {
+            setuserDataIsStudyingTrail(true)
+            return CheckStar
+        } else {
+            return UncheckStar
+        }
+
+        // return user.trails.filter(trail => trail.id.toString() == trailId).length > 0  ? CheckStar : UncheckStar
+    }
+
+    const getBallStyle = (topic: TopicAPI): string => {
+        if (userData && userDataIsStudyingTrail) {
+            const allSubTopicsAreChecked = topic.subTopics.every(subTopic => subTopic.active) 
+            return "main-trail-topic-ball"
+        }
+        return "main-trail-topic-ball-unchecked"
     }
 
     if(!trail) {
@@ -114,7 +122,7 @@ export function Trail() {
                         {trail.topics.reverse().map((topic, index) => { 
                             return (
                                 <div key={index} id="main-trail-topic-list-item" onClick={() => setTopicOpened(topic)}>
-                                    <div id="main-trail-topic-ball"><p>{index + 1}</p></div>
+                                    <div id={getBallStyle(topic)}><p>{index + 1}</p></div>
                                     <li id="main-trail-topic-text">{topic.name}</li>
                                 </div>
                             )}
