@@ -6,5 +6,5 @@ export type UserAPI = {
     email: String;
     password: String;
     isMentor: boolean;
-    userTrails: Array<TrailAPI>;
+    trails: Array<TrailAPI>;
 }

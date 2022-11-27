@@ -24,8 +24,9 @@ export function Trail() {
 
     useEffect(() => {
         const user = localStorage.getItem("loged-user")
-        if (user) {
-            setUserData(JSON.parse(user))
+        if (user) { 
+            const email = JSON.parse(user).email;
+            updateUserData(email)
         }
 
         getTrailData(trailId || "")
@@ -34,12 +35,22 @@ export function Trail() {
     useEffect(() => {
         
     }, [topicOpened])
+
+    useEffect(() => {
+        
+    }, [starIconToShow])
     
     const getTrailData = async (trailId: string) => {
         const data = (await axios.get("https://dev-path.herokuapp.com/trail/" + trailId)).data;
         setTrail(data)
     }
 
+    const updateUserData = async (email: string) => {
+        const data = (await axios.get("https://dev-path.herokuapp.com/user/" + email)).data;
+        setUserData(data)
+        setStarIconToShow(getStarIconOnRender(data))
+    }
+    
     const getModalStyle = () => {
         let style = Modal.defaultStyles
         if (style.content) {
@@ -51,19 +62,35 @@ export function Trail() {
         }
         return style
     }
-
+    
     const closeModal = () => {
         setTopicOpened(undefined)
     }
-
+    
     const handleStarClick = () => {
         if (!userData) {
             alert("Você precisa fazer login para salvar uma trilha")
         } else {
+            assignTrailToUser(trailId || "", userData.email)
+        }
+    }
+
+    const assignTrailToUser = async (trailId: String, email: String) => {
+        console.log("Email usado: " + email)
+        try {
+            await axios.post(`https://dev-path.herokuapp.com/user/${email}/add-trail/${trailId}`);
+            console.log("Trilha salva com sucesso")
             setStarIconToShow(CheckStar)
             alert("Trilha salva com sucesso")
-            // todo: adicionar chamada da api para salvar trilha
+
+        } catch(e) {
+            console.log(e)
+            alert("Houve um erro ao salvar a trilha. Tente novamente.")
         }
+    }
+
+    const getStarIconOnRender = (user: UserAPI) => {
+        return user.trails.filter(trail => trail.id.toString() == trailId).length > 0  ? CheckStar : UncheckStar
     }
 
     if(!trail) {
