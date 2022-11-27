@@ -25,7 +25,7 @@ export function Trail() {
     useEffect(() => {
         const user = localStorage.getItem("loged-user")
         if (user) { 
-            const email = JSON.parse(user).email;
+            const email = JSON.parse(user).email
             updateUserData(email)
         }
 

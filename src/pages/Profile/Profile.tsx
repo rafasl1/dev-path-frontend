@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
+import { Link } from 'react-router-dom'
 import Woman2 from '../../assets/woman(2)1.svg'
 import { TrailCard } from '../../components/TrailCard/TrailCard'
 import { TrailAPI } from '../../types/TrailAPI'
@@ -15,17 +16,22 @@ export function Profile() {
     useEffect(() => {
         const user = localStorage.getItem("loged-user")
         if (user) {
-            setUserData(JSON.parse(user))
+            const email = JSON.parse(user).email
+            updateUserData(email)
         } else {
             navigate("/login")
         }
 
-        getTrailsData()
     }, [])
-    
-    const getTrailsData = async () => {
-        const data = (await axios.get("https://dev-path.herokuapp.com/trail/all")).data;
-        setTrailsData(data.slice(0,6))
+
+    const updateUserData = async (email: string) => {
+        const data: UserAPI = (await axios.get("https://dev-path.herokuapp.com/user/" + email)).data;
+        setUserData(data)
+        setTrailsData(data.trails)
+    }
+
+    if(!userData || !trailsData) {
+        return <h1>Carregando dados...</h1>
     }
     
     return (
@@ -42,11 +48,16 @@ export function Profile() {
 
             <div id='profile-user-trails-div'>
                 <h1 id='profile-user-trail-title'>Trilhas em andamento:</h1>
-                <div id='trails-div-list'>
-                    {trailsData.map((trail, index) => (
-                        <TrailCard key={index} {...trail}/>
-                    ))}
-                </div>
+                
+                { trailsData.length != 0 ? (
+                    <div id='trails-div-list'>
+                        {trailsData.map((trail, index) => (
+                            <TrailCard key={index} {...trail}/>
+                        ))}
+                    </div>
+                ) : (
+                    <h3 id='profile-user-trail-subtitle'>Você ainda não começou nenhuma trilha. Escolha uma em <Link to={"/find-your-path"}>Trilhas</Link></h3>
+                )}
 
                 <h1 id='profile-user-trail-title'>Trilhas concluídas:</h1>
                 <h3 id='profile-user-trail-subtitle'>Ainda não foi concluída nenhuma trilha</h3>
