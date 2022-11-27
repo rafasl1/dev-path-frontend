@@ -76,15 +76,12 @@ export function Trail() {
     }
 
     const assignTrailToUser = async (trailId: String, email: String) => {
-        console.log("Email usado: " + email)
         try {
             await axios.post(`https://dev-path.herokuapp.com/user/${email}/add-trail/${trailId}`);
-            console.log("Trilha salva com sucesso")
             setStarIconToShow(CheckStar)
             alert("Trilha salva com sucesso")
 
         } catch(e) {
-            console.log(e)
             alert("Houve um erro ao salvar a trilha. Tente novamente.")
         }
     }
