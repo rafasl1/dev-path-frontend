@@ -86,14 +86,14 @@ export function Trail() {
         } else {
             return UncheckStar
         }
-
-        // return user.trails.filter(trail => trail.id.toString() == trailId).length > 0  ? CheckStar : UncheckStar
     }
 
     const getBallStyle = (topic: TopicAPI): string => {
         if (userData && userDataIsStudyingTrail) {
             const allSubTopicsAreChecked = topic.subTopics.every(subTopic => subTopic.active) 
-            return "main-trail-topic-ball"
+            if (allSubTopicsAreChecked) {
+                return "main-trail-topic-ball"
+            }
         }
         return "main-trail-topic-ball-unchecked"
     }
