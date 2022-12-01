@@ -28,6 +28,7 @@ export function Trail() {
         if (user) { 
             const email = JSON.parse(user).email
             updateUserData(email)
+            return
         }
 
         getTrailData(trailId || "")
@@ -38,10 +39,18 @@ export function Trail() {
         setTrail(data)
     }
 
+    const getTrailDataWhenUserIsLogged = (user: UserAPI) => {
+        const trail = user.trails.find(trail => trail.id.toString() == trailId)
+        if(trail) {
+            setTrail(trail)
+        }
+    }
+
     const updateUserData = async (email: string) => {
         const data = (await axios.get("https://dev-path.herokuapp.com/user/" + email)).data;
         setUserData(data)
         setStarIconToShow(getStarIconOnRender(data))
+        getTrailDataWhenUserIsLogged(data)
     }
     
     const getModalStyle = () => {
