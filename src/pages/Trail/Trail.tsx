@@ -152,7 +152,7 @@ export function Trail() {
                             return (
                                 <div id="modal-div-subtopic-item-div">
                                     <label className="modal-div-subtopic-item-input-label">
-                                        <input type="checkbox" className="modal-div-subtopic-item-input" />
+                                        <input type="checkbox" className="modal-div-subtopic-item-input" defaultChecked={subTopic?.active} />
                                         <a href={""+subTopic.content} target="_blank" className="modal-subtopic-item-name">{subTopic.name}</a>
                                     </label>
                                 </div>
