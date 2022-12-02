@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
+import { useForm } from "react-hook-form";
+
 import axios from 'axios';
 import Modal from 'react-modal';
 import XIcon from '../../assets/x-icon.svg'
@@ -19,6 +21,7 @@ export function Trail() {
     const [starIconToShow, setStarIconToShow] = useState(UncheckStar)
     const [userData, setUserData] = useState<UserAPI>()
     const [userDataIsStudyingTrail, setuserDataIsStudyingTrail] = useState<boolean>(false)
+    const { register, handleSubmit, formState: { errors } } = useForm();
 
     let { trailId } = useParams();
     const navigate = useNavigate();
@@ -107,6 +110,24 @@ export function Trail() {
         return "main-trail-topic-ball-unchecked"
     }
 
+    const onSubmit = (formData: any) => {
+        for (const subTopicsItems in formData) {
+            console.log("chave: " + subTopicsItems + " e valor: " + formData[subTopicsItems])
+
+            const payload: any = {
+                userEmail: userData?.email,
+                trailId: parseInt(trailId || ""),
+                topicId: parseInt(subTopicsItems.split("-")[1]),
+                subTopicId: parseInt(subTopicsItems.split("-")[3]),
+                active: formData[subTopicsItems]
+              }
+
+            console.log(payload)
+
+            // const response = (await axios.patch("https://dev-path.herokuapp.com/user/update-trail", payload));
+        }
+    }
+
     if(!trail) {
         return <h1>Carregando dados...</h1>
     }
@@ -148,17 +169,19 @@ export function Trail() {
                             <img src={XIcon} id="x-icon" onClick={() => closeModal()}/>
                         </div>
                         <h1 id="modal-title">Onde você pode estudar sobre<br/>{topicOpened.name}:</h1>
-                        {topicOpened.subTopics.map(subTopic => {
+                        <form onSubmit={handleSubmit(onSubmit)}>
+                        {topicOpened.subTopics.map((subTopic) => {
                             return (
                                 <div id="modal-div-subtopic-item-div">
                                     <label className="modal-div-subtopic-item-input-label">
-                                        <input type="checkbox" className="modal-div-subtopic-item-input" defaultChecked={subTopic?.active} />
+                                        <input type="checkbox" className="modal-div-subtopic-item-input" defaultChecked={subTopic?.active} {...register(`topic-${topicOpened.id}-subtopic-${subTopic.id}`)} />
                                         <a href={""+subTopic.content} target="_blank" className="modal-subtopic-item-name">{subTopic.name}</a>
                                     </label>
                                 </div>
                             )
                         })}
-                        <button id={userData ? "modal-submit-button" : "modal-submit-button-disabled"} type="button" disabled={!userData}>Atualizar</button>
+                        <button type="submit" id={userData ? "modal-submit-button" : "modal-submit-button-disabled"} disabled={!userData}>Atualizar</button>
+                        </form>
                 </Modal>
                 )}
 
