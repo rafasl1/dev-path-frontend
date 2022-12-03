@@ -110,7 +110,7 @@ export function Trail() {
         return "main-trail-topic-ball-unchecked"
     }
 
-    const onSubmit = (formData: any) => {
+    const onSubmit = async (formData: any) => {
         for (const subTopicsItems in formData) {
             console.log("chave: " + subTopicsItems + " e valor: " + formData[subTopicsItems])
 
@@ -122,10 +122,17 @@ export function Trail() {
                 active: formData[subTopicsItems]
               }
 
-            console.log(payload)
+            try {
+                const response = (await axios.patch("https://dev-path.herokuapp.com/user/update-trail", payload));
+                console.log(response)
+                
+            } catch(e) {
+                console.warn("Houve um erro tentando salvar o status do subtopico: " + subTopicsItems)
+            }
 
-            // const response = (await axios.patch("https://dev-path.herokuapp.com/user/update-trail", payload));
         }
+        alert("Trilha atualizada com sucesso!")
+        navigate(0)
     }
 
     if(!trail) {
