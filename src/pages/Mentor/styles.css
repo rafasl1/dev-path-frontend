@@ -73,15 +73,14 @@
     height: 30px;
 }
 
-#profile-user-trails-div {
+#profile-mentor-schedules-div {
     margin: 40px auto;
     padding: auto 50px;
 
     width: 60%;
     height: auto;
 
-    background-color: #c6dc4c;
-    color: white;
+    color: black;
 
     border-radius: 15px;
 
@@ -93,6 +92,7 @@
     color: black;
 
     margin-top: 30px;
+    margin-bottom: 50px;
 }
 
 #profile-user-trail-subtitle {
@@ -103,4 +103,31 @@
 .profile-mentor-subtitle {
     margin-top: 30px;
     margin-bottom: 12px;
+}
+
+.mentor-schedule-item {
+    width: fit-content;
+
+    padding: 15px;
+    background-color: #26ADE4;
+    color: white;
+    border-radius: 5px;
+}
+
+.mentor-schedule-item-status {
+    border: 0px;
+    border-radius: 5px;
+
+    padding: 10px;
+    margin-top: 10px;
+
+    color: white;
+}
+
+.mentor-schedule-item-status.available {
+    background-color: #b3c745;
+}
+
+.mentor-schedule-item-status.unavailable {
+    background-color: grey;
 }

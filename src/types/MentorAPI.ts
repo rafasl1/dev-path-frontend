@@ -6,5 +6,13 @@ export type MentorAPI = {
     description: String;
     hourCost: number;
     payments: [];
-    schedules: [];
+    schedules: Array<Schedule>;
+}
+
+type Schedule = {
+    id: number;
+    mentorEmail: String;
+    userEmail: String;
+    date: String;
+    status: String;
 }

@@ -5,10 +5,6 @@ import './styles.css'
 
 export function MentorCard (props: MentorCardContent) {
 
-    useEffect(() => {
-        console.log("Dados", props)
-    }, [])
-
     return (
         
         <div id="mentor-card">

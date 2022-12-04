@@ -1,22 +1,29 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { set } from 'react-hook-form'
 import { useNavigate, useParams } from 'react-router'
 import { Link } from 'react-router-dom'
 import Man1 from '../../assets/man1.svg'
 import { TrailCard } from '../../components/TrailCard/TrailCard'
-import { TrailAPI } from '../../types/TrailAPI'
+import { MentorAPI } from '../../types/MentorAPI'
 import { UserAPI } from '../../types/User';
 import './styles.css'
 
 export function Mentor() {
-    const [mentorData, setMentorData] = useState<any>()
+    const [mentorData, setMentorData] = useState<MentorAPI>()
+    const [dictionary, setDictionary] = useState<Map<String, String>>()
     const navigate = useNavigate();
     let { mentorId } = useParams();
-
+    
 
     useEffect(() => {
+        const scheduleStatusDictionary = new Map<String, String>()
+        scheduleStatusDictionary.set("PENDING", "Pendente")
+        scheduleStatusDictionary.set("AVAILABLE", "Disponível")
+        scheduleStatusDictionary.set("RESERVED", "Reservado")
+        scheduleStatusDictionary.set("CANCELLED", "Cancelado")
+        setDictionary(scheduleStatusDictionary)
         updateMentorData()
-
     }, [])
 
     const updateMentorData = async () => {
@@ -46,8 +53,21 @@ export function Mentor() {
                 </ul>
             </div>
 
-            <div id='profile-user-trails-div'>
+            <div id='profile-mentor-schedules-div'>
                 <h1 id='profile-user-trail-title'>Escolha seu horário:</h1>
+
+                { mentorData.schedules.length != 0 ? (
+                    <div id='trails-div-list'>
+                        {mentorData.schedules.map((schedule, index) => (
+                            <div className='mentor-schedule-item'>
+                                <p>{schedule.date}</p>
+                                <button onClick={() => alert("agendado")} className={`mentor-schedule-item-status ${schedule.status == "AVAILABLE" ? "available" : "unavailable"}`} disabled={schedule.status != "AVAILABLE"}>{dictionary?.get(schedule.status)}</button>
+                            </div>
+                        ))}
+                    </div>
+                ) : (
+                    <h3 id='profile-user-trail-subtitle'>Você não tem nenhum horário disponibilizado ainda.</h3>
+                )}
                 
             </div>
 
