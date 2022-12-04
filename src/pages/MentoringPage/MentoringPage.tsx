@@ -36,6 +36,7 @@ export function MentoringPage() {
                 <div id='mentors'>
                     {mentorsData.map((mentor, index) => (
                         <MentorCard key={index}
+                            id={mentor.id}
                             image={Man1}
                             name={mentor.user.name} 
                             role={"Desenvolvedor Backend Senior"} 
