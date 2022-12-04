@@ -29,8 +29,16 @@ export function Profile() {
     const updateUserData = async (email: string) => {
         const data: UserAPI = (await axios.get("https://dev-path.herokuapp.com/user/" + email)).data;
         setUserData(data)
-        setTrailsData(data.trails)
+        setTrailsInProgressToShow(data.trails)
         setFinishedTrailsToShow(data.trails)
+    }
+
+    const setTrailsInProgressToShow = (trails: Array<TrailAPI>) => {
+        const finishedTrailsToShow = trails.filter(trail => !trail.topics.every(topic => 
+            topic.subTopics.every(subTopic => subTopic.active )
+        ))
+
+        setTrailsData(finishedTrailsToShow)
     }
 
     const setFinishedTrailsToShow = (trails: Array<TrailAPI>) => {
@@ -67,7 +75,7 @@ export function Profile() {
                         ))}
                     </div>
                 ) : (
-                    <h3 id='profile-user-trail-subtitle'>Você ainda não começou nenhuma trilha. Escolha uma em <Link to={"/find-your-path"}>Trilhas</Link></h3>
+                    <h3 id='profile-user-trail-subtitle'>Você ainda não começou nenhuma trilha. <br/>Comece uma na página <Link to={"/find-your-path"}>{`'Encontre seu caminho'`}</Link>!</h3>
                 )}
 
                 <h1 id='profile-user-trail-title'>Trilhas concluídas:</h1>
