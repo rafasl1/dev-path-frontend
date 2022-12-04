@@ -1,0 +1,29 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
+import { UserAPI } from '../../types/User';
+import './styles.css'
+
+export function Terms() {
+
+    const [termsAccepted, setTermsAccepted] = useState<boolean>(false)
+
+    return (
+        <div id="registration-div-page">
+            <h1>Para prosseguir, precisamos que aceite os termos da plataforma:</h1>
+            <h2>Bem-vindo ao website DevPath, avisamos previamente que ao acessar esse site você concorda tacitamente com as disposições contidas nesse documento, por isso muito atenção ao ler cada uma das cláusulas e obrigações dispostas a seguir:</h2>
+            <h3>1.Do Objeto</h3> 
+            <p>Essa plataforma tem como finalidade de “e-commerce”, ou seja, disponibilizar a venda de produtos e serviços online disponibilizados na nossa plataforma ou aplicativo. Este documento foi criado pelo advogado Diego Castro e modificado com permissão para este website.</p>
+            <h3>Da reserva dos produtos</h3>
+            <p>2.1 O nosso website não trabalha com nenhuma possibilidade de reservar qualquer um dos produtos ofertados em nossa plataforma.</p>
+            <p>O fato de o produto estar no carrinho de compras não é tido como uma reserva e não impossibilita que outras pessoas possam adquirir o produto e eles venham a se esgotar.</p>
+            <label>
+                <input type={"checkbox"} onClick={() => setTermsAccepted(!termsAccepted)}/>
+                Concordo com os termos e condições de uso da plataforma e mentoria
+            </label>
+            <button onClick={() => alert("Termos aceitos")} disabled={!termsAccepted}>Continuar</button>
+        </div>
+    )
+}

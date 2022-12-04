@@ -67,7 +67,7 @@ export function Mentor() {
                         {mentorData.schedules.map((schedule, index) => (
                             <div className='mentor-schedule-item'>
                                 <p>{formatDate(schedule.date + "")}</p>
-                                <button onClick={() => alert("agendado")} className={`mentor-schedule-item-status ${schedule.status == "AVAILABLE" ? "available" : "unavailable"}`} disabled={schedule.status != "AVAILABLE"}>{dictionary?.get(schedule.status)}</button>
+                                <button onClick={() => navigate("/create-schedule/terms/" + mentorId)} className={`mentor-schedule-item-status ${schedule.status == "AVAILABLE" ? "available" : "unavailable"}`} disabled={schedule.status != "AVAILABLE"}>{dictionary?.get(schedule.status)}</button>
                             </div>
                         ))}
                     </div>

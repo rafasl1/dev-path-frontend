@@ -7,6 +7,7 @@ import { Mentor } from "./pages/Mentor/Mentor"
 import { MentoringPage } from "./pages/MentoringPage/MentoringPage"
 import { Profile } from "./pages/Profile/Profile"
 import { Registration } from "./pages/Registration/Registration"
+import { Terms } from "./pages/Terms/Terms"
 import { Trail } from "./pages/Trail/Trail"
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
               <Route path="/find-your-path" element={<FindYourPath />} />
               <Route path="/:trailId" element={<Trail />} />
               <Route path="/find-your-path/:trailId" index element={<Trail />} />
+              <Route path="/create-schedule/terms/:mentorId" index element={<Terms />} />
           </Routes>
 
 
