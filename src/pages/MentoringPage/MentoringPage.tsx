@@ -33,6 +33,12 @@ export function MentoringPage() {
 
             <div className='mentorsDiv'>
                 <h1 className='list-title'>Mentores:</h1>
+
+                <div id='searchMentor'>
+                    <img id='lupa' src={Lupa} />
+                    <input id='searchInput' type="text" placeholder='Busque seu mentor ideal aqui'/>
+                </div>
+
                 <div id='mentors'>
                     {mentorsData.map((mentor, index) => (
                         <MentorCard key={index}
