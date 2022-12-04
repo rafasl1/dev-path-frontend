@@ -10,6 +10,7 @@ import './styles.css'
 
 export function Profile() {
     const [trailsData, setTrailsData] = useState<Array<TrailAPI>>([])
+    const [finishedTrails, setFinishedTrails] = useState<Array<TrailAPI>>([])
     const [userData, setUserData] = useState<UserAPI>()
     const navigate = useNavigate();
 
@@ -18,6 +19,7 @@ export function Profile() {
         if (user) {
             const email = JSON.parse(user).email
             updateUserData(email)
+
         } else {
             navigate("/login")
         }
@@ -28,6 +30,15 @@ export function Profile() {
         const data: UserAPI = (await axios.get("https://dev-path.herokuapp.com/user/" + email)).data;
         setUserData(data)
         setTrailsData(data.trails)
+        setFinishedTrailsToShow(data.trails)
+    }
+
+    const setFinishedTrailsToShow = (trails: Array<TrailAPI>) => {
+        const finishedTrailsToShow = trails.filter(trail => trail.topics.every(topic => 
+            topic.subTopics.every(subTopic => subTopic.active )
+        ))
+
+        setFinishedTrails(finishedTrailsToShow)
     }
 
     if(!userData || !trailsData) {
@@ -60,7 +71,16 @@ export function Profile() {
                 )}
 
                 <h1 id='profile-user-trail-title'>Trilhas concluídas:</h1>
-                <h3 id='profile-user-trail-subtitle'>Ainda não foi concluída nenhuma trilha</h3>
+                
+                { finishedTrails.length != 0 ? (
+                    <div id='trails-div-list'>
+                        {finishedTrails.map((trail, index) => (
+                            <TrailCard key={index} {...trail}/>
+                        ))}
+                    </div>
+                ) : (
+                    <h3 id='profile-user-trail-subtitle'>Você ainda não finalizou nenhuma trilha.</h3>
+                )}
 
             </div>
 
