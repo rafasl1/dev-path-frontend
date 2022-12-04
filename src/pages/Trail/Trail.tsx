@@ -46,6 +46,8 @@ export function Trail() {
         const trail = user.trails.find(trail => trail.id.toString() == trailId)
         if(trail) {
             setTrail(trail)
+        } else {
+            getTrailData(trailId || "")
         }
     }
 
