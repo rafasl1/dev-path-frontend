@@ -26,6 +26,12 @@ export function Mentor() {
         updateMentorData()
     }, [])
 
+    const formatDate = (dateToFormat: string): string => {
+        const date = new Date(dateToFormat)
+        return `${date.getHours()}:${date.getMinutes().toString().padStart(2, '0')} ${date.getDay()}/${date.getMonth()}/${date.getFullYear()}`  
+
+    }
+
     const updateMentorData = async () => {
         const data: any = (await axios.get("https://dev-path.herokuapp.com/mentor/" + mentorId)).data;
         setMentorData(data)
@@ -60,7 +66,7 @@ export function Mentor() {
                     <div id='trails-div-list'>
                         {mentorData.schedules.map((schedule, index) => (
                             <div className='mentor-schedule-item'>
-                                <p>{schedule.date}</p>
+                                <p>{formatDate(schedule.date + "")}</p>
                                 <button onClick={() => alert("agendado")} className={`mentor-schedule-item-status ${schedule.status == "AVAILABLE" ? "available" : "unavailable"}`} disabled={schedule.status != "AVAILABLE"}>{dictionary?.get(schedule.status)}</button>
                             </div>
                         ))}
