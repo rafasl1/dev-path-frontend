@@ -1,0 +1,43 @@
+#finish-div-page {
+    text-align: center;
+
+    padding: 40px 180px;
+
+}
+
+.finish-subtitle {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.finish-subtitle.blue {
+    color: #26ADE4;
+}
+
+#terms-subtitle-item {
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+#continue-button {
+    margin-top: 30px;
+
+    border: 0px;
+    border-radius: 5px;
+    background-color: #26ADE4;
+    color: white;
+
+    width: 170px;
+    height: 50px;
+}
+
+.important-value {
+    background-color: grey;
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.next-instruction-item {
+    margin-top: 10px;
+}

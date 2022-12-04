@@ -9,6 +9,8 @@ import './styles.css'
 export function Terms() {
 
     const [termsAccepted, setTermsAccepted] = useState<boolean>(false)
+    const navigate = useNavigate();
+
 
     return (
         <div id="terms-div-page">
@@ -24,7 +26,7 @@ export function Terms() {
                 Concordo com os termos e condições de uso da plataforma e mentoria
             </label>
             <br />
-            <button id={`continue-button${ termsAccepted ? "" : "-disabled" }`} onClick={() => alert("Termos aceitos")} disabled={!termsAccepted}>Continuar</button>
+            <button id={`continue-button${ termsAccepted ? "" : "-disabled" }`} onClick={() => navigate("/create-schedule/finish")} disabled={!termsAccepted}>Continuar</button>
         </div>
     )
 }

@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Router, Routes } from "react-router-dom"
 import { Header } from "./components/Header/Header"
 import { FindYourPath } from "./pages/FindYourPath/FindYourPath"
+import { FinishScheduling } from "./pages/FinishScheduling/FinishScheduling"
 import { Home } from "./pages/Home/Home"
 import { Login } from "./pages/Login/Login"
 import { Mentor } from "./pages/Mentor/Mentor"
@@ -28,6 +29,7 @@ function App() {
               <Route path="/:trailId" element={<Trail />} />
               <Route path="/find-your-path/:trailId" index element={<Trail />} />
               <Route path="/create-schedule/terms/:mentorId" index element={<Terms />} />
+              <Route path="/create-schedule/finish" index element={<FinishScheduling />} />
           </Routes>
 
 
