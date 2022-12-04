@@ -49,6 +49,11 @@ export function Profile() {
         setFinishedTrails(finishedTrailsToShow)
     }
 
+    const logOff = () => {
+        localStorage.removeItem("loged-user")
+        navigate('/login')
+    }
+
     if(!userData || !trailsData) {
         return <h1>Carregando dados...</h1>
     }
@@ -62,6 +67,10 @@ export function Profile() {
                 <h1 id='profile-user-name'>{userData?.name}</h1>
                 <button id='profile-user-became-mentor-button' onClick={() => alert("Nosso time está avaliando seu perfil!\nEntraremos em contato se acharmos que você pode ser um mentor na DevPath!")}>
                     Quero ser um mentor
+                </button>
+                <br />
+                <button id='profile-user-logof-button' onClick={logOff}>
+                    Sair da conta
                 </button>
             </div>
 
