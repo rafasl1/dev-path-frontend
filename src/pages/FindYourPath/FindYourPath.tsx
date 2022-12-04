@@ -10,9 +10,11 @@ import './styles.css'
 import { useEffect, useState } from 'react';
 import { TrailAPI } from '../../types/TrailAPI';
 import axios from 'axios';
+import { useForm } from 'react-hook-form';
 
 export function FindYourPath() {
     const [trailsData, setTrailsData] = useState<Array<TrailAPI>>([])
+    const { register, handleSubmit, formState: { errors } } = useForm();
 
     useEffect(() => {
         getTrailsData()
@@ -23,12 +25,37 @@ export function FindYourPath() {
         setTrailsData(data.slice(0,6))
     }
 
+    const getSearchedTrailBySubstring = async (substring: string) => {
+        const data = (await axios.get("https://dev-path.herokuapp.com/trail/search/" + substring)).data;
+        setTrailsData(data.slice(0,6))
+    }
+
+    const getSearchedTrails = (formData: any) => {
+        if(
+            formData.searchTrailSubstring == undefined || 
+            formData.searchTrailSubstring == "" || 
+            formData.searchTrailSubstring == " " 
+        ) {
+            getTrailsData()
+        } else {
+            getSearchedTrailBySubstring(formData.searchTrailSubstring)
+        }
+    }
+
     return (
         <main id='trails-page'>
 
             <div id='trails-div'>
 
                 <h1 className='list-title'>Trilhas:</h1>
+
+                <div id='searchTrail'>
+                    <form>
+                        <img id='lupa' src={Lupa} onClick={handleSubmit(getSearchedTrails)}/>
+                        <input id='searchInput' type="text" placeholder='Busque sua trilha ideal aqui' {...register("searchTrailSubstring")}/>
+                    </form>
+                </div>
+
                 <div id='trails-div-list'>
                     {trailsData.map((trail, index) => (
                         <TrailCard key={index} {...trail}/>
