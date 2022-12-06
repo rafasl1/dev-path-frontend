@@ -111,7 +111,7 @@ export function Profile() {
                                 </div>
                             ))
                         ) : (
-                        <h1>Não há agendamentos feitos ainda</h1>
+                        <h3>Não há agendamentos feitos ainda</h3>
                         )}
                     </div>
                 </div>
