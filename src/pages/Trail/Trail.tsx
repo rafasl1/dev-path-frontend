@@ -77,8 +77,10 @@ export function Trail() {
     const handleStarClick = () => {
         if (!userData) {
             alert("Você precisa fazer login para salvar uma trilha")
-        } else {
+        } else if (!userDataIsStudyingTrail) {
             assignTrailToUser(trailId || "", userData.email)
+        } else {
+            removeTrailFromUser(trailId || "", userData.email)
         }
     }
 
@@ -87,9 +89,22 @@ export function Trail() {
             await axios.post(`https://dev-path.herokuapp.com/user/${email}/add-trail/${trailId}`);
             setStarIconToShow(CheckStar)
             alert("Trilha salva com sucesso")
+            navigate(0)
 
         } catch(e) {
             alert("Houve um erro ao salvar a trilha. Tente novamente.")
+        }
+    }
+
+    const removeTrailFromUser = async (trailId: String, email: String) => {
+        try {
+            await axios.delete(`https://dev-path.herokuapp.com/user/${email}/delete-trail/${trailId}`);
+            setStarIconToShow(UncheckStar)
+            alert("Trilha removida com sucesso")
+            navigate(0)
+
+        } catch(e) {
+            alert("Houve um erro ao remover a trilha. Tente novamente.")
         }
     }
 
