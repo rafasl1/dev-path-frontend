@@ -64,7 +64,7 @@ export function Mentor() {
 
                 { mentorData.schedules.length != 0 ? (
                     <div id='trails-div-list'>
-                        {mentorData.schedules.map((schedule, index) => (
+                        {mentorData.schedules.filter(schedule => schedule.status == "AVAILABLE").map((schedule, index) => (
                             <div className='mentor-schedule-item'>
                                 <p>{formatDate(schedule.date + "")}</p>
                                 <button onClick={() => navigate("/create-schedule/terms/" + mentorId)} className={`mentor-schedule-item-status ${schedule.status == "AVAILABLE" ? "available" : "unavailable"}`} disabled={schedule.status != "AVAILABLE"}>{dictionary?.get(schedule.status)}</button>
