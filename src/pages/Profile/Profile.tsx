@@ -106,18 +106,15 @@ export function Profile() {
 
                 <div id='scheduled-mentorings-div'>
                     <h2 id='scheduled-mentorings-title'>Mentorias agendadas</h2>
+                    {userData.schedules.length == 0 && (<h3 id='scheduled-mentorings-subtitle'>Não há agendamentos feitos ainda</h3>)}
                     <div id='scheduled-mentorings-list'>
-                        {userData.schedules.length > 0 ? (
-                            userData.schedules.map(schedule => (
+                        {userData.schedules.map(schedule => (
                                 <div className='scheduled-mentoring-item'>
                                     <h3 className='scheduled-mentoring-item-title-date'>{dateFormat(new Date(schedule.date + ""), "dd/MM/yyyy - HH:MM")}</h3>
                                     <h4 className='scheduled-mentoring-item-content'>{"Email do mentor: " + schedule.mentorEmail}</h4>
                                     <h4 className={`scheduled-mentoring-item-content status ${schedule.status == "RESERVED" ? "confirmed" : "pending"}`}>{dictionary?.get(schedule.status)}</h4>
                                 </div>
-                            ))
-                        ) : (
-                        <h3>Não há agendamentos feitos ainda</h3>
-                        )}
+                            ))}
                     </div>
                 </div>
             </div>

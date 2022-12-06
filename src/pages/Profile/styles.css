@@ -110,11 +110,17 @@
 }
 
 #scheduled-mentorings-div {
+    text-align: center;
+
     margin-top: 40px;
 }
 
 #scheduled-mentorings-title {
     color: black;
+}
+
+#scheduled-mentorings-subtitle {
+    margin-top: 10px;
 }
 
 #scheduled-mentorings-list {
