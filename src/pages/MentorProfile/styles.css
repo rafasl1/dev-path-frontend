@@ -10,7 +10,7 @@
     background-color: yellow;
 }
 
-#profile-user-info-div {
+#profile-mentor-info-div {
     margin: 40px auto;
     padding: auto auto;
 
@@ -36,11 +36,13 @@
     margin-top: 8px;
 }
 
-#profile-user-became-mentor-button {
+#profile-mentor-button {
     border: 0px;
     border-radius: 5px;
     background-color: #26ADE4;
     color: white;
+
+    margin-left: 10px;
 
     width: 170px;
     height: 50px;
@@ -68,7 +70,7 @@
     margin-top: 10px;
 }
 
-#user-tag {
+#mentor-tag {
     margin-top: 20px;
     margin-bottom: 0px;
 
@@ -82,49 +84,48 @@
     height: 30px;
 }
 
-#profile-user-trails-div {
+#profile-mentor-trails-div {
     margin: 40px auto;
     padding: auto 50px;
 
     width: 60%;
     height: auto;
 
-    background-color: #c6dc4c;
-    color: white;
-
     border-radius: 15px;
 
     text-align: center;
 }
 
-#profile-user-trail-title {
+#profile-mentor-trail-title {
     font-size: xx-large;
     color: black;
 
     margin-top: 30px;
 }
 
-#profile-user-trail-subtitle {
+#profile-mentor-trail-subtitle {
     font-size: large;
     color: black;
 }
 
-#scheduled-mentorings-div {
+#mentor-scheduled-mentorings-div {
     margin-top: 40px;
 }
 
-#scheduled-mentorings-title {
+#mentor-scheduled-mentorings-title {
     color: black;
 }
 
-#scheduled-mentorings-list {
+#mentor-scheduled-mentorings-list {
     display: flex;
     flex-wrap: wrap;
+
+    padding-left: 40px;
 
     margin-top: 30px;
 }
 
-.scheduled-mentoring-item {
+.mentor-scheduled-mentoring-item {
     border-radius: 5px;
 
     background-color: #ececec;
@@ -132,17 +133,20 @@
     padding: 20px;
 
     margin-right: 10px;
+    margin-bottom: 10px;
+
+    width: 300px;
 }
 
-.scheduled-mentoring-item-title-date {
+.mentor-scheduled-mentoring-item-title-date {
     color: #a3b43e;
 }
 
-.scheduled-mentoring-item-content {
+.mentor-scheduled-mentoring-item-content {
     margin-top: 8px;
 }
 
-.scheduled-mentoring-item-content.status {
+.mentor-scheduled-mentoring-item-content.status {
     border: 1px solid black;
     border-radius: 5px;
 
@@ -152,10 +156,18 @@
     color: white;
 }
 
-.scheduled-mentoring-item-content.status.pending {
+.mentor-scheduled-mentoring-item-content.status.pending {
     background-color: grey;
 }
 
-.scheduled-mentoring-item-content.status.confirmed {
+.mentor-scheduled-mentoring-item-content.status.confirmed {
     background-color: #c6dc4c;
+}
+
+.mentor-scheduled-mentoring-item-content.status.available {
+    background-color: #26ADE4;
+}
+
+#register-date {
+    margin-right: 10px;
 }

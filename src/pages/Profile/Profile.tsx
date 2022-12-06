@@ -81,7 +81,7 @@ export function Profile() {
 
             <div id='profile-user-info-div'>
                 <img id='user-avatar' src={Woman2} /><br/>
-                <button id='user-tag'>#Aluno</button>
+                <button id='user-tag'>{userData.mentorStatus == MentorStatus.ACTIVE ? "#Mentor" : "#Aluno"}</button>
                 <h1 id='profile-user-name'>{userData?.name}</h1>
 
                 {userData.mentorStatus == MentorStatus.INACTIVE ? 
@@ -89,9 +89,14 @@ export function Profile() {
                         Quero ser um mentor
                     </button>) 
                 : 
+                userData.mentorStatus == MentorStatus.PENDING ?
                     (<button id='profile-user-became-mentor-button-in-progress' disabled>
                         Perfil em análise
                     </button>)
+                : 
+                (<button id='profile-user-became-mentor-button' onClick={() => navigate("/perfil/mentor")}>
+                    Ver sua mentoria
+                </button>)
                 }
 
                 <br />
