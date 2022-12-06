@@ -3,9 +3,9 @@ import { UserAPI } from "./User";
 export type MentorAPI = {
     id: number;
     user: UserAPI;
-    description: String;
+    role: String;
+    yearsOfExperience: number;
     hourCost: number;
-    payments: [];
     schedules: Array<Schedule>;
 }
 

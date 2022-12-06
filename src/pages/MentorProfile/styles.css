@@ -171,3 +171,8 @@
 #register-date {
     margin-right: 10px;
 }
+
+.register-update-input {
+    margin-bottom: 15px;
+    width: 200px;
+}
