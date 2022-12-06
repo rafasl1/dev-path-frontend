@@ -108,3 +108,53 @@
     font-size: large;
     color: black;
 }
+
+#scheduled-mentorings-div {
+    margin-top: 40px;
+}
+
+#scheduled-mentorings-title {
+    color: black;
+}
+
+#scheduled-mentorings-list {
+    display: flex;
+
+    margin-top: 30px;
+}
+
+.scheduled-mentoring-item {
+    border-radius: 5px;
+
+    background-color: #ececec;
+
+    padding: 20px;
+
+    margin-right: 10px;
+}
+
+.scheduled-mentoring-item-title-date {
+    color: #a3b43e;
+}
+
+.scheduled-mentoring-item-content {
+    margin-top: 8px;
+}
+
+.scheduled-mentoring-item-content.status {
+    border: 1px solid black;
+    border-radius: 5px;
+
+    padding-top:3px;
+    padding-bottom:3px;
+
+    color: white;
+}
+
+.scheduled-mentoring-item-content.status.pending {
+    background-color: grey;
+}
+
+.scheduled-mentoring-item-content.status.confirmed {
+    background-color: #c6dc4c;
+}

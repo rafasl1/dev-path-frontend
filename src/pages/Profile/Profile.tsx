@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import dateFormat from "dateformat";
 import { useNavigate } from 'react-router'
 import { Link } from 'react-router-dom'
 import Woman2 from '../../assets/woman(2)1.svg'
@@ -12,6 +13,7 @@ export function Profile() {
     const [trailsData, setTrailsData] = useState<Array<TrailAPI>>([])
     const [finishedTrails, setFinishedTrails] = useState<Array<TrailAPI>>([])
     const [userData, setUserData] = useState<UserAPI>()
+    const [dictionary, setDictionary] = useState<Map<String, String>>()
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -19,6 +21,7 @@ export function Profile() {
         if (user) {
             const email = JSON.parse(user).email
             updateUserData(email)
+            createDictionary()
 
         } else {
             navigate("/login")
@@ -60,6 +63,15 @@ export function Profile() {
         navigate(0)
     }
 
+    const createDictionary = () => {
+        const scheduleStatusDictionary = new Map<String, String>()
+        scheduleStatusDictionary.set("PENDING", "Pendente")
+        scheduleStatusDictionary.set("AVAILABLE", "Disponível")
+        scheduleStatusDictionary.set("RESERVED", "Reservado")
+        scheduleStatusDictionary.set("CANCELLED", "Cancelado")
+        setDictionary(scheduleStatusDictionary)
+    }
+
     if(!userData || !trailsData) {
         return <h1>Carregando dados...</h1>
     }
@@ -86,6 +98,23 @@ export function Profile() {
                 <button id='profile-user-logof-button' onClick={logOff}>
                     Sair da conta
                 </button>
+
+                <div id='scheduled-mentorings-div'>
+                    <h2 id='scheduled-mentorings-title'>Mentorias agendadas</h2>
+                    <div id='scheduled-mentorings-list'>
+                        {userData.schedules.length > 0 ? (
+                            userData.schedules.map(schedule => (
+                                <div className='scheduled-mentoring-item'>
+                                    <h3 className='scheduled-mentoring-item-title-date'>{dateFormat(new Date(schedule.date + ""), "dd/MM/yyyy - HH:MM")}</h3>
+                                    <h4 className='scheduled-mentoring-item-content'>{"Email do mentor: " + schedule.mentorEmail}</h4>
+                                    <h4 className={`scheduled-mentoring-item-content status ${schedule.status == "RESERVED" ? "confirmed" : "pending"}`}>{dictionary?.get(schedule.status)}</h4>
+                                </div>
+                            ))
+                        ) : (
+                        <h1>Não há agendamentos feitos ainda</h1>
+                        )}
+                    </div>
+                </div>
             </div>
 
             <div id='profile-user-trails-div'>
