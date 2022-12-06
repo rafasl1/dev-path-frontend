@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { UserAPI } from '../../types/User';
 import './styles.css'
@@ -10,7 +10,6 @@ export function Terms() {
 
     const [termsAccepted, setTermsAccepted] = useState<boolean>(false)
     const navigate = useNavigate();
-
 
     return (
         <div id="terms-div-page">

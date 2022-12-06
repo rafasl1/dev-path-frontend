@@ -5,6 +5,7 @@ import { useNavigate, useParams } from 'react-router'
 import { Link } from 'react-router-dom'
 import Man1 from '../../assets/man1.svg'
 import { TrailCard } from '../../components/TrailCard/TrailCard'
+import { CreateSchedule } from '../../types/CreateSchedule'
 import { MentorAPI } from '../../types/MentorAPI'
 import { UserAPI } from '../../types/User';
 import './styles.css'
@@ -12,8 +13,27 @@ import './styles.css'
 export function Mentor() {
     const [mentorData, setMentorData] = useState<MentorAPI>()
     const [dictionary, setDictionary] = useState<Map<String, String>>()
-    const navigate = useNavigate();
+    const [userData, setUserData] = useState<UserAPI>()
+    
     let { mentorId } = useParams();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const user = localStorage.getItem("loged-user")
+        if (user) {
+            const email = JSON.parse(user).email
+            updateUserData(email)
+
+        } else {
+            navigate("/login")
+        }
+
+    }, [])
+
+    const updateUserData = async (email: string) => {
+        const data: UserAPI = (await axios.get("https://dev-path.herokuapp.com/user/" + email)).data;
+        setUserData(data)
+    }
     
 
     useEffect(() => {
@@ -35,6 +55,17 @@ export function Mentor() {
     const updateMentorData = async () => {
         const data: any = (await axios.get("https://dev-path.herokuapp.com/mentor/" + mentorId)).data;
         setMentorData(data)
+    }
+
+    const proceedWithScheduling = (scheduleDate: String, scheduleId: number) => {
+        const scheduleToCreate: CreateSchedule = {
+            date: scheduleDate,
+            mentorId: mentorData?.id || 0,
+            scheduleId: scheduleId,
+            userId: userData?.id || 0
+        }
+        localStorage.setItem("schedule-to-create", JSON.stringify(scheduleToCreate))
+        navigate("/create-schedule/terms/" + mentorId)
     }
 
 
@@ -62,17 +93,17 @@ export function Mentor() {
             <div id='profile-mentor-schedules-div'>
                 <h1 id='profile-user-trail-title'>Escolha seu horário:</h1>
 
-                { mentorData.schedules.length != 0 ? (
+                { mentorData.schedules.filter(schedule => schedule.status == "AVAILABLE").length != 0 ? (
                     <div id='trails-div-list'>
                         {mentorData.schedules.filter(schedule => schedule.status == "AVAILABLE").map((schedule, index) => (
                             <div className='mentor-schedule-item'>
                                 <p>{formatDate(schedule.date + "")}</p>
-                                <button onClick={() => navigate("/create-schedule/terms/" + mentorId)} className={`mentor-schedule-item-status ${schedule.status == "AVAILABLE" ? "available" : "unavailable"}`} disabled={schedule.status != "AVAILABLE"}>{dictionary?.get(schedule.status)}</button>
+                                <button onClick={() => proceedWithScheduling(schedule.date, schedule.id)} className={`mentor-schedule-item-status ${schedule.status == "AVAILABLE" ? "available" : "unavailable"}`} disabled={schedule.status != "AVAILABLE"}>{dictionary?.get(schedule.status)}</button>
                             </div>
                         ))}
                     </div>
                 ) : (
-                    <h3 id='profile-user-trail-subtitle'>Você não tem nenhum horário disponibilizado ainda.</h3>
+                    <h3 id='profile-user-trail-subtitle'>O mentor ainda não tem nenhum horário disponibilizado ainda.</h3>
                 )}
                 
             </div>

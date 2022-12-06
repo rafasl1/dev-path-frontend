@@ -3,12 +3,31 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
+import { CreateSchedule } from "../../types/CreateSchedule";
 import { UserAPI } from '../../types/User';
 import './styles.css'
 
 export function FinishScheduling() {
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const scheduleStringfied = localStorage.getItem('schedule-to-create')
+        if (scheduleStringfied) {
+            const schedule: CreateSchedule = JSON.parse(scheduleStringfied)
+            createPendingSchedule(schedule)
+        }
+    }, [])
+
+    const createPendingSchedule = async (schedule: CreateSchedule) => {
+        try {
+            localStorage.removeItem("schedule-to-create")
+            const route = `https://dev-path.herokuapp.com/mentor/reserve-schedule/${schedule.mentorId}/${schedule.scheduleId}/${schedule.userId}`
+            await axios.post(route)
+        } catch(e) {
+            alert("Houve um erro ao criar o agendamento pendente.\nTente realizar o agendamento com o mentor novamente")
+        }
+    } 
 
     return (
         <div id="finish-div-page">
