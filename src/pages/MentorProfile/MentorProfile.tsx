@@ -126,9 +126,10 @@ export function MentorProfile() {
 
             <div id='profile-mentor-trails-div'>
                 <h1 id='profile-mentor-trail-title'>Agendamentos em andamento:</h1>
+                {userData.schedules.length == 0 && (<h3 id='scheduled-mentorings-subtitle'>Não há agendamentos feitos ainda</h3>)}
 
                 <div id='mentor-scheduled-mentorings-list'>
-                        {userData.schedules.length > 0 ? (
+                        {(
                             userData.schedules.map(schedule => (
                                 <div className='mentor-scheduled-mentoring-item'>
                                     <h3 className='mentor-scheduled-mentoring-item-title-date'>{dateFormat(new Date(schedule.date + ""), "dd/MM/yyyy - HH:MM")}</h3>
@@ -137,8 +138,6 @@ export function MentorProfile() {
                                     <h4 className={`mentor-scheduled-mentoring-item-content status ${statusStyle?.get(schedule.status)}`}>{dictionary?.get(schedule.status)}</h4>
                                 </div>
                             ))
-                        ) : (
-                        <h3>Não há agendamentos feitos ainda</h3>
                         )}
                 </div>
 
