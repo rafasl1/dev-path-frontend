@@ -5,6 +5,12 @@ export type UserAPI = {
     name: String;
     email: String;
     password: String;
-    isMentor: boolean;
+    mentorStatus: MentorStatus;
     trails: Array<TrailAPI>;
+}
+
+export enum MentorStatus {
+    INACTIVE = "INACTIVE",
+    ACTIVE = "ACTIVE",
+    PENDING = "PENDING"
 }

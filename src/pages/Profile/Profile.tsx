@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import Woman2 from '../../assets/woman(2)1.svg'
 import { TrailCard } from '../../components/TrailCard/TrailCard'
 import { TrailAPI } from '../../types/TrailAPI'
-import { UserAPI } from '../../types/User';
+import { MentorStatus, UserAPI } from '../../types/User';
 import './styles.css'
 
 export function Profile() {
@@ -54,6 +54,12 @@ export function Profile() {
         navigate('/login')
     }
 
+    const applyToBeMentor = async () => {
+        await axios.post(`https://dev-path.herokuapp.com/mentor/become-mentor/${userData?.id}`);
+        alert("Nosso time está avaliando seu perfil!\nEntraremos em contato se acharmos que você pode ser um mentor na DevPath!")
+        navigate(0)
+    }
+
     if(!userData || !trailsData) {
         return <h1>Carregando dados...</h1>
     }
@@ -65,9 +71,17 @@ export function Profile() {
                 <img id='user-avatar' src={Woman2} /><br/>
                 <button id='user-tag'>#Aluno</button>
                 <h1 id='profile-user-name'>{userData?.name}</h1>
-                <button id='profile-user-became-mentor-button' onClick={() => alert("Nosso time está avaliando seu perfil!\nEntraremos em contato se acharmos que você pode ser um mentor na DevPath!")}>
-                    Quero ser um mentor
-                </button>
+
+                {userData.mentorStatus == MentorStatus.INACTIVE ? 
+                    (<button id='profile-user-became-mentor-button' onClick={applyToBeMentor}>
+                        Quero ser um mentor
+                    </button>) 
+                : 
+                    (<button id='profile-user-became-mentor-button-in-progress' disabled>
+                        Perfil em análise
+                    </button>)
+                }
+
                 <br />
                 <button id='profile-user-logof-button' onClick={logOff}>
                     Sair da conta
