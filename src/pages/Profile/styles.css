@@ -14,7 +14,7 @@
     margin: 40px auto;
     padding: auto auto;
 
-    width: 30%;
+    width: 40%;
     height: 670px;
     
     border-radius: 15px;
@@ -86,8 +86,8 @@
     margin: 40px auto;
     padding: auto 50px;
 
-    width: 60%;
-    height: auto;
+    width: 50%;
+    height: 900px;
 
     background-color: #c6dc4c;
     color: white;
@@ -138,6 +138,9 @@
     padding: 20px;
 
     margin-right: 10px;
+    margin-bottom: 10px;
+
+    width: 200px;
 }
 
 .scheduled-mentoring-item-title-date {

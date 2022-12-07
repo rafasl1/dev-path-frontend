@@ -34,7 +34,6 @@ export function MentorProfile() {
 
     const updateUserData = async (id: number) => {
         const data: MentorAPI = (await axios.get("https://dev-path.herokuapp.com/mentor/" + id)).data;
-        console.log(data)
         setUserData(data)
     }
 
@@ -70,7 +69,6 @@ export function MentorProfile() {
     }
 
     const onSubmit = (formData: any) => {
-        console.log(formData)
         registerNewDate(formData.date)
     }
 
@@ -86,7 +84,6 @@ export function MentorProfile() {
 
     const registerUserData = async (updateDTO: any) => {
         try {
-            console.log(updateDTO)
             await axios.patch(`https://dev-path.herokuapp.com/mentor/update`, {
                 userId: userData?.id,
                 role: updateDTO.role,

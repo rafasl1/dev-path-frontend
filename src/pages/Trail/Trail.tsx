@@ -129,7 +129,6 @@ export function Trail() {
 
     const onSubmit = async (formData: any) => {
         for (const subTopicsItems in formData) {
-            console.log("chave: " + subTopicsItems + " e valor: " + formData[subTopicsItems])
 
             const payload: any = {
                 userEmail: userData?.email,
@@ -141,7 +140,6 @@ export function Trail() {
 
             try {
                 const response = (await axios.patch("https://dev-path.herokuapp.com/user/update-trail", payload));
-                console.log(response)
                 
             } catch(e) {
                 console.warn("Houve um erro tentando salvar o status do subtopico: " + subTopicsItems)
