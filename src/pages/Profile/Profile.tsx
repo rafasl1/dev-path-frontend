@@ -83,6 +83,7 @@ export function Profile() {
                 <img id='user-avatar' src={Woman2} /><br/>
                 <button id='user-tag'>{userData.mentorStatus == MentorStatus.ACTIVE ? "#Mentor" : "#Aluno"}</button>
                 <h1 id='profile-user-name'>{userData?.name}</h1>
+                <h2 id='profile-user-name'>{userData?.email}</h2>
 
                 {userData.mentorStatus == MentorStatus.INACTIVE ? 
                     (<button id='profile-user-became-mentor-button' onClick={applyToBeMentor}>
