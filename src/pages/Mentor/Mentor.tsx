@@ -80,6 +80,7 @@ export function Mentor() {
                 <img id='user-avatar' src={Man1} /><br/>
                 <button id='user-tag'>#Mentor</button>
                 <h1 id='profile-mentor-name'>{mentorData?.user.name}</h1>
+                <h2 id='profile-mentor-name'>{mentorData?.role}</h2>
                 <h2 className='profile-mentor-subtitle'>Apresentação</h2>
                 <p>Especialista em desenvolvimento backend com 7 anos de experiência. Gosto do ambiente inovador e de rápidas mudanças oferecidas por startups e todos os desafios que esse rítimo proporcionam para o time de desenvolvimento.</p>
                 <h2 className='profile-mentor-subtitle'>Experiência</h2>

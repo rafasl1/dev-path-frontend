@@ -157,6 +157,8 @@ export function MentorProfile() {
                 <img id='user-avatar' src={Man1} /><br/>
                 <button id='mentor-tag'>#Mentor</button>
                 <h1 id='profile-user-name'>{userData?.user.name}</h1>
+                <h2 id='profile-user-name'>{userData?.role}</h2>
+                <h2 id='profile-user-name'>{"Anos de experiência: " + userData?.yearsOfExperience}</h2>
 
                 <br />
                 <button id='profile-mentor-button' onClick={() => navigate(-1)}>
