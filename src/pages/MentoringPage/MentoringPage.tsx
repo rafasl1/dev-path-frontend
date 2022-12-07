@@ -45,8 +45,8 @@ export function MentoringPage() {
                             id={mentor.id}
                             image={Man1}
                             name={mentor.user.name} 
-                            role={"Desenvolvedor Backend Senior"} 
-                            experienceTime={"Experiência de 5 anos"} 
+                            role={mentor.role} 
+                            experienceTime={`Experiência de ${mentor.yearsOfExperience} anos`} 
                             hourValue={mentor.hourCost} 
                         />
                     ))}
