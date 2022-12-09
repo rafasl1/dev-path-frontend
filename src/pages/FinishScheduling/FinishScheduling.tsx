@@ -20,6 +20,8 @@ export function FinishScheduling() {
     }, [])
 
     const createPendingSchedule = async (schedule: CreateSchedule) => {
+        console.log(schedule)
+
         try {
             localStorage.removeItem("schedule-to-create")
             const route = `https://dev-path.herokuapp.com/mentor/reserve-schedule/${schedule.mentorId}/${schedule.scheduleId}/${schedule.userId}`

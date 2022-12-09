@@ -16,7 +16,15 @@ export function Mentor() {
     let { mentorId } = useParams();
     const navigate = useNavigate();
 
-    useEffect(() => {}, [])
+    useEffect(() => {
+
+        const user = localStorage.getItem("loged-user")
+        if (user) {
+            const email = JSON.parse(user).email
+            updateUserData(email)
+
+        } 
+    }, [])
 
     const updateUserData = async (email: string) => {
         const data: UserAPI = (await axios.get("https://dev-path.herokuapp.com/user/" + email)).data;
@@ -50,7 +58,8 @@ export function Mentor() {
         if (!user) {
             navigate("/login")
         } else {
-    
+            console.log("UserID: ", userData?.id)
+
             const scheduleToCreate: CreateSchedule = {
                 date: scheduleDate,
                 mentorId: mentorData?.id || 0,
