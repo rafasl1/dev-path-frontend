@@ -48,14 +48,21 @@ export function Mentor() {
     }
 
     const proceedWithScheduling = (scheduleDate: String, scheduleId: number) => {
-        const scheduleToCreate: CreateSchedule = {
-            date: scheduleDate,
-            mentorId: mentorData?.id || 0,
-            scheduleId: scheduleId,
-            userId: userData?.id || 0
+        const user = localStorage.getItem("loged-user")
+        if (!user) {
+            navigate("/login")
+        } else {
+    
+            const scheduleToCreate: CreateSchedule = {
+                date: scheduleDate,
+                mentorId: mentorData?.id || 0,
+                scheduleId: scheduleId,
+                userId: userData?.id || 0
+            }
+            localStorage.setItem("schedule-to-create", JSON.stringify(scheduleToCreate))
+            navigate("/create-schedule/terms/" + mentorId)
         }
-        localStorage.setItem("schedule-to-create", JSON.stringify(scheduleToCreate))
-        navigate("/create-schedule/terms/" + mentorId)
+
     }
 
 
