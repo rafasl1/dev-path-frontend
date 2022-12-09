@@ -18,17 +18,7 @@ export function Mentor() {
     let { mentorId } = useParams();
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const user = localStorage.getItem("loged-user")
-        if (user) {
-            const email = JSON.parse(user).email
-            updateUserData(email)
-
-        } else {
-            navigate("/login")
-        }
-
-    }, [])
+    useEffect(() => {}, [])
 
     const updateUserData = async (email: string) => {
         const data: UserAPI = (await axios.get("https://dev-path.herokuapp.com/user/" + email)).data;
