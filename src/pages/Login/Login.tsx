@@ -49,7 +49,7 @@ export function Login() {
                             <input className="input-text" type="password" {...register("password",  { required: true })} />    
                         </label>
                     </div>
-                    <input id="submit-button" type="submit"  /><br/>
+                    <input id="submit-button" type="submit" value={"Entrar"}  /><br/>
                     <Link id="registration-link" to={"/cadastro"}>Não tem conta? Crie a sua!</Link>
                 </form>
             </div>
