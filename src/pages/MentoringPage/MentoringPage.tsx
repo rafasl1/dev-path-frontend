@@ -15,9 +15,11 @@ import { useEffect, useState } from 'react'
 import { TrailAPI } from '../../types/TrailAPI'
 import axios from 'axios'
 import { MentorAPI } from '../../types/MentorAPI'
+import { useForm } from 'react-hook-form'
 
 export function MentoringPage() {
     const [mentorsData, setMentorsData] = useState<Array<MentorAPI>>([])
+    const { register, handleSubmit, formState: { errors } } = useForm();
 
     useEffect(() => {
         getMentorsData()
@@ -28,6 +30,25 @@ export function MentoringPage() {
         setMentorsData(data.slice(0,8))
     }
 
+    const getSearchedMentors = (formData: any) => {
+        console.log(formData)
+
+        if(
+            formData.searchMentorSubstring == undefined || 
+            formData.searchMentorSubstring == "" || 
+            formData.searchMentorSubstring == " " 
+        ) {
+            getMentorsData()
+        } else {
+            getSearchedMentorBySubstring(formData.searchMentorSubstring)
+        }
+    }
+
+    const getSearchedMentorBySubstring = async (substring: string) => {
+        const data = (await axios.get("https://dev-path.herokuapp.com/mentor/search/" + substring)).data;
+        setMentorsData(data.slice(0,6))
+    }
+
     return (
         <main className='mentorPage'>
 
@@ -35,8 +56,8 @@ export function MentoringPage() {
                 <h1 className='list-title'>Mentores:</h1>
 
                 <div id='searchMentor'>
-                    <img id='lupa' src={Lupa} />
-                    <input id='searchInput' type="text" placeholder='Busque seu mentor ideal aqui'/>
+                    <img id='lupa' src={Lupa} onClick={handleSubmit(getSearchedMentors)}/>
+                    <input id='searchInput' type="text" placeholder='Busque seu mentor ideal aqui' {...register("searchMentorSubstring")}/>
                 </div>
 
                 <div id='mentors'>
@@ -47,7 +68,7 @@ export function MentoringPage() {
                             name={mentor.user.name} 
                             role={mentor.role} 
                             experienceTime={`Experiência de ${mentor.yearsOfExperience} anos`} 
-                            hourValue={mentor.hourCost} 
+                            hourValue={mentor.hourCost}
                         />
                     ))}
                 </div>
