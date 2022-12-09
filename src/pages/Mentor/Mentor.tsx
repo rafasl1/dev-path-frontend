@@ -76,14 +76,8 @@ export function Mentor() {
                 <button id='user-tag'>#Mentor</button>
                 <h1 id='profile-mentor-name'>{mentorData?.user.name}</h1>
                 <h2 id='profile-mentor-name'>{mentorData?.role}</h2>
-                <h2 className='profile-mentor-subtitle'>Apresentação</h2>
-                <p>Especialista em desenvolvimento backend com 7 anos de experiência. Gosto do ambiente inovador e de rápidas mudanças oferecidas por startups e todos os desafios que esse rítimo proporcionam para o time de desenvolvimento.</p>
-                <h2 className='profile-mentor-subtitle'>Experiência</h2>
-                <ul>
-                    <li>Desenvolvimento Java</li>
-                    <li>Desenvolvimento Kotlin</li>
-                    <li>AWS</li>
-                </ul>
+                <h2 id='profile-mentor-name'>{"Anos de experiência: " + mentorData?.yearsOfExperience}</h2>
+                <h2 id='profile-mentor-name'>{"Valor da hora: R$" + mentorData?.hourCost + ",00"}</h2>
             </div>
 
             <div id='profile-mentor-schedules-div'>
