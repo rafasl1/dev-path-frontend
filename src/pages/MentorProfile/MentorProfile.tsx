@@ -156,6 +156,7 @@ export function MentorProfile() {
                 <h1 id='profile-user-name'>{userData?.user.name}</h1>
                 <h2 id='profile-user-name'>{userData?.role}</h2>
                 <h2 id='profile-user-name'>{"Anos de experiência: " + userData?.yearsOfExperience}</h2>
+                <h2 id='profile-user-name'>{"Valor da hora: R$" + userData?.hourCost + ",00"}</h2>
 
                 <br />
                 <button id='profile-mentor-button' onClick={() => navigate(-1)}>
@@ -178,7 +179,7 @@ export function MentorProfile() {
                         {(
                             userData.schedules.map(schedule => (
                                 <div className='mentor-scheduled-mentoring-item'>
-                                    <h3 className='mentor-scheduled-mentoring-item-title-date'>{dateFormat(new Date(schedule.date + ""), "dd/MM/yyyy - HH:MM")}</h3>
+                                    <h3 className='mentor-scheduled-mentoring-item-title-date'>{dateFormat(new Date(schedule.date + ""), "dd/mm/yyyy - HH:MM")}</h3>
                                     <h4 className='mentor-scheduled-mentoring-item-content'>Usuário mentorado: </h4>
                                     <h4 className='mentor-scheduled-mentoring-item-content'>{schedule.userEmail || "Sem usuário"}</h4>
                                     <h4 className={`mentor-scheduled-mentoring-item-content status ${statusStyle?.get(schedule.status)}`}>{dictionary?.get(schedule.status)}</h4>

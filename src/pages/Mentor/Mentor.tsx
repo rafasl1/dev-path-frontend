@@ -1,10 +1,8 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { set } from 'react-hook-form'
+import dateFormat from "dateformat";
 import { useNavigate, useParams } from 'react-router'
-import { Link } from 'react-router-dom'
 import Man1 from '../../assets/man1.svg'
-import { TrailCard } from '../../components/TrailCard/TrailCard'
 import { CreateSchedule } from '../../types/CreateSchedule'
 import { MentorAPI } from '../../types/MentorAPI'
 import { UserAPI } from '../../types/User';
@@ -95,7 +93,7 @@ export function Mentor() {
                     <div id='trails-div-list'>
                         {mentorData.schedules.filter(schedule => schedule.status == "AVAILABLE").map((schedule, index) => (
                             <div className='mentor-schedule-item'>
-                                <p>{formatDate(schedule.date + "")}</p>
+                                <p>{dateFormat(new Date(schedule.date + ""), "dd/mm/yyyy - HH:MM")}</p>
                                 <button onClick={() => proceedWithScheduling(schedule.date, schedule.id)} className={`mentor-schedule-item-status ${schedule.status == "AVAILABLE" ? "available" : "unavailable"}`} disabled={schedule.status != "AVAILABLE"}>{dictionary?.get(schedule.status)}</button>
                             </div>
                         ))}
